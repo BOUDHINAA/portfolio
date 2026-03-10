@@ -20,6 +20,7 @@ const Index = () => {
       <Skills />
       <Contact />
       <Footer />
+      
     </main>
   );
 };

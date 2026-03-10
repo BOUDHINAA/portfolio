@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Menu, X, Code2 } from "lucide-react";
+import ThemeToggle from "./ThemeToggle";
 
 const navItems = [
   { name: "Home", href: "#home" },
@@ -86,16 +87,23 @@ export default function Navigation() {
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full" />
             </motion.a>
           ))}
+
+          <ThemeToggle />
         </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          className="md:hidden text-primary"
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label="Toggle menu"
-        >
-          {isOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
+        {/* Mobile Right Actions */}
+        <div className="flex items-center gap-3 md:hidden">
+          <ThemeToggle />
+
+          <button
+            className="text-primary"
+            onClick={() => setIsOpen(!isOpen)}
+            aria-label="Toggle menu"
+            type="button"
+          >
+            {isOpen ? <X size={28} /> : <Menu size={28} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Navigation */}
