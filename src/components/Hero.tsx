@@ -116,7 +116,8 @@ export default function Hero() {
               <div className="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-primary bg-[length:200%_100%] animate-shimmer opacity-0 group-hover:opacity-100 transition-opacity" />
             </a>
             <a
-              href="#contact"
+              href={`${import.meta.env.BASE_URL}files/Ahmed_Boudhina_CV.pdf`}
+              download="Ahmed_Boudhina_CV.pdf"
               className="px-8 py-4 border-2 border-primary text-primary font-display font-bold rounded-lg hover:bg-primary hover:text-primary-foreground transition-all hover:scale-105 flex items-center gap-2"
             >
               <Download size={20} />
@@ -138,13 +139,8 @@ export default function Hero() {
               },
               {
                 icon: Linkedin,
-                href: "https://www.linkedin.com",
+                href: "https://www.linkedin.com/in/ahmed-boudhina/",
                 color: "hover:text-blue-400",
-              },
-              {
-                icon: Instagram,
-                href: "https://www.instagram.com",
-                color: "hover:text-pink-400",
               },
             ].map(({ icon: Icon, href, color }) => (
               <motion.a
