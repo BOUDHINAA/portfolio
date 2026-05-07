@@ -16,11 +16,13 @@ import {
   Building2,
   Leaf,
   Gamepad2,
+  X,
 } from "lucide-react";
 import { Tilt } from "react-tilt";
 
 type Project = {
   title: string;
+  shortDescription: string;
   description: string;
   images: string[];
   tech: string[];
@@ -38,16 +40,52 @@ type ProjectCategory = {
 };
 
 const projectCategories: Record<string, ProjectCategory> = {
-  fullstack: {
-    title: "Full Stack",
-    subtitle: "Web Applications & Platforms",
-    icon: Globe,
-    color: "primary",
+  websites: {
+    title: "Web Experience",
+    subtitle: "Professional and Modern Web Development",
+    icon: Gamepad2,
+    color: "accent",
     projects: [
       {
-        title: "Opportunify",
+        title: "Nexits Platform Contributions",
+        shortDescription:
+          "Contributed to scalable full stack features, reusable UI components, and validation flows in a production startup environment.",
         description:
-          "A MERN-based job hunt platform designed to streamline job searching with advanced features including a chatbot and OCR-based resume reading.",
+          "At Nexits, I contributed to a production-grade platform by building and refining full stack features in a collaborative startup environment. My work included developing reusable UI components with Next.js and TypeScript, improving validation flows, and supporting cleaner product architecture across the front end and back end. I also worked with tools such as tRPC, PostgreSQL, Zod, and shadcn/ui to help create scalable, maintainable, and consistent user experiences.",
+        images: [
+          `${import.meta.env.BASE_URL}Nexits1.jpeg`,
+          `${import.meta.env.BASE_URL}Nexits2.jpeg`,
+          `${import.meta.env.BASE_URL}Nexits3.jpeg`,
+          `${import.meta.env.BASE_URL}Nexits4.jpeg`,
+          `${import.meta.env.BASE_URL}Nexits5.jpeg`,
+          `${import.meta.env.BASE_URL}Nexits6.jpeg`,
+          `${import.meta.env.BASE_URL}Nexits7.jpeg`,
+          `${import.meta.env.BASE_URL}Nexits8.jpeg`,
+          `${import.meta.env.BASE_URL}Nexits9.jpeg`,
+          `${import.meta.env.BASE_URL}Nexits10.jpeg`,
+          `${import.meta.env.BASE_URL}Nexits11.jpeg`,
+          `${import.meta.env.BASE_URL}Nexits12.jpeg`,
+          `${import.meta.env.BASE_URL}Nexits13.jpeg`,
+          `${import.meta.env.BASE_URL}Nexits14.jpeg`,
+        ],
+        tech: [
+          "Next.js",
+          "TypeScript",
+          "tRPC",
+          "PostgreSQL",
+          "Zod",
+          "shadcn/ui",
+        ],
+        github: "https://github.com/BOUDHINAA",
+        demo: "#",
+        icon: Globe,
+      },
+      {
+        title: "Opportunify",
+        shortDescription:
+          "A MERN-based job hunt platform with chatbot support and OCR-powered resume reading features.",
+        description:
+          "Opportunify is a MERN-based job hunt platform created to make the application process more efficient and interactive for job seekers. The project combines a modern user interface with practical job-search features, including a chatbot experience and OCR-based resume reading to simplify how users upload, understand, and manage their profiles. It was designed as a full stack application with a strong focus on usability, structured data flow, and features that solve real user pain points.",
         images: [
           `${import.meta.env.BASE_URL}Opportunify-1.png`,
           `${import.meta.env.BASE_URL}Opportunify-2.png`,
@@ -59,21 +97,25 @@ const projectCategories: Record<string, ProjectCategory> = {
       },
       {
         title: "University Dorm Management System",
+        shortDescription:
+          "A full stack platform to manage student housing, room allocation, and administrative workflows.",
         description:
-          "A full stack university dorm management platform built to manage student housing, room allocation, and administrative workflows.",
-        images: [`${import.meta.env.BASE_URL}placeholder.svg`],
+          "This project is a full stack university dorm management platform built to simplify housing operations for students and administrators. It supports key workflows such as room allocation, resident management, and administrative coordination through a structured and practical interface. Built with Angular, Spring Boot, and SQL, the project focused on combining a responsive front end with a solid backend architecture to manage business logic and persistent data efficiently.",
+        images: [`${import.meta.env.BASE_URL}Dorm.png`],
         tech: ["Angular", "Spring Boot", "SQL"],
-        github: "https://github.com/BOUDHINAA",
+        
         demo: "#",
         icon: Building2,
       },
       {
         title: "Carbon Footprint By Trip",
+        shortDescription:
+          "A trip-based calculator that estimates both carbon footprint and travel cost with a recap export.",
         description:
-          "A trip-based carbon footprint calculator that estimates environmental impact and trip cost using transport type, distance, passengers, and travel details.",
-        images: [`${import.meta.env.BASE_URL}placeholder.svg`],
+          "Carbon Footprint By Trip is a trip-based calculator that estimates both environmental impact and travel cost using transport type, distance, passenger count, and travel details. The goal of the project was to provide a practical and informative experience where users can simulate trips, understand their carbon footprint, and review a clear summary of the result. It also integrates PDF export to make the trip recap easy to save and share.",
+        images: [`${import.meta.env.BASE_URL}Carbon.png`],
         tech: ["Laravel", "PHP", "Blade", "MySQL", "PDF Export"],
-        github: "https://github.com/BOUDHINAA",
+
         demo: "#",
         icon: Leaf,
       },
@@ -88,9 +130,18 @@ const projectCategories: Record<string, ProjectCategory> = {
     projects: [
       {
         title: "CX Maturity Gamified Platform",
+        shortDescription:
+          "A gamified platform that helps companies assess CX maturity through interactive challenges and guided progression.",
         description:
-          "A gamified platform designed to help companies assess their CX maturity through surveys, interactive challenges, guided progression, and AI-oriented business scenarios.",
-        images: [`${import.meta.env.BASE_URL}EY-Simulaitor.png`],
+          "This project is a gamified platform designed to help companies assess their CX maturity through surveys, interactive challenges, guided progression, and AI-oriented business scenarios. Instead of presenting the assessment as a traditional static form, the experience is structured to feel more engaging and strategic, encouraging users to progress through tasks while reflecting on customer experience capabilities. The platform combines product thinking, UX design, and modern web development to create an experience that is both informative and immersive.",
+        images: [
+          `${import.meta.env.BASE_URL}EY-Simulaitor.png`,
+          `${import.meta.env.BASE_URL}Simulaitor1.png`,
+          `${import.meta.env.BASE_URL}Simulaitor2.png`,
+          `${import.meta.env.BASE_URL}Simulaitor3.png`,
+          `${import.meta.env.BASE_URL}Simulaitor4.png`,
+          `${import.meta.env.BASE_URL}Simulaitor5.png`,
+        ],
         tech: [
           "Next.js",
           "TypeScript",
@@ -104,32 +155,6 @@ const projectCategories: Record<string, ProjectCategory> = {
       },
     ],
   },
-
-  websites: {
-    title: "Web Experience",
-    subtitle: "Professional and Modern Web Development",
-    icon: Gamepad2,
-    color: "accent",
-    projects: [
-      {
-        title: "Nexits Platform Contributions",
-        description:
-          "Contributed to scalable full stack features, reusable UI components, validation flows, and database tooling in a production environment at Nexits.",
-        images: [`${import.meta.env.BASE_URL}placeholder.svg`],
-        tech: [
-          "Next.js",
-          "TypeScript",
-          "tRPC",
-          "PostgreSQL",
-          "Zod",
-          "shadcn/ui",
-        ],
-        github: "https://github.com/BOUDHINAA",
-        demo: "#",
-        icon: Globe,
-      },
-    ],
-  },
 };
 
 type CategoryKey = keyof typeof projectCategories;
@@ -139,10 +164,10 @@ export default function Projects() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const prefersReducedMotion = useReducedMotion();
 
-  const [activeCategory, setActiveCategory] =
-    useState<CategoryKey>("fullstack");
+  const [activeCategory, setActiveCategory] = useState<CategoryKey>("websites");
   const [imageIndexes, setImageIndexes] = useState<Record<string, number>>({});
   const [pausedProject, setPausedProject] = useState<string | null>(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const defaultTiltOptions = {
     reverse: false,
@@ -160,9 +185,7 @@ export default function Projects() {
     const handleHashChange = () => {
       if (window.location.hash === "#ai") {
         setActiveCategory("ai");
-      } else if (window.location.hash === "#fullstack") {
-        setActiveCategory("fullstack");
-      } else if (window.location.hash === "#websites") {
+      } else {
         setActiveCategory("websites");
       }
     };
@@ -173,14 +196,41 @@ export default function Projects() {
   }, []);
 
   useEffect(() => {
-    if (prefersReducedMotion) return;
+    const handleEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setSelectedProject(null);
+      }
+    };
 
-    const visibleProjects = projectCategories[activeCategory].projects;
+    window.addEventListener("keydown", handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
+  }, []);
+
+  useEffect(() => {
+    if (selectedProject) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [selectedProject]);
+
+  useEffect(() => {
+    if (prefersReducedMotion) return;
+    if (selectedProject) return;
+
+    const allProjects = Object.values(projectCategories).flatMap(
+      (category) => category.projects,
+    );
+
     const interval = window.setInterval(() => {
       setImageIndexes((prev) => {
         const next = { ...prev };
 
-        visibleProjects.forEach((project) => {
+        allProjects.forEach((project) => {
           if (project.images.length <= 1) return;
           if (pausedProject === project.title) return;
 
@@ -190,10 +240,10 @@ export default function Projects() {
 
         return next;
       });
-    }, 6000);
+    }, 3000);
 
     return () => window.clearInterval(interval);
-  }, [activeCategory, pausedProject, prefersReducedMotion]);
+  }, [pausedProject, prefersReducedMotion, selectedProject]);
 
   const categoryColors = {
     primary: {
@@ -218,6 +268,32 @@ export default function Projects() {
       glow: "hover:shadow-[0_0_30px_hsl(45_100%_60%/0.16)]",
     },
   };
+
+  const setProjectImage = (projectTitle: string, index: number) => {
+    setImageIndexes((prev) => ({
+      ...prev,
+      [projectTitle]: index,
+    }));
+  };
+
+  const activeCategoryColors =
+    categoryColors[
+      projectCategories[activeCategory].color as keyof typeof categoryColors
+    ];
+
+  const selectedImageIndex = selectedProject
+    ? (imageIndexes[selectedProject.title] ?? 0)
+    : 0;
+
+  const selectedImage = selectedProject
+    ? selectedProject.images[selectedImageIndex]
+    : "";
+
+  const selectedHasGithub =
+    !!selectedProject?.github && selectedProject.github !== "#";
+
+  const selectedHasDemo =
+    !!selectedProject?.demo && selectedProject.demo !== "#";
 
   return (
     <section id="projects" className="py-32 relative overflow-hidden" ref={ref}>
@@ -262,16 +338,11 @@ export default function Projects() {
                 onClick={() => setActiveCategory(key)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className={`
-                  flex items-center gap-3 px-6 py-3 rounded-xl font-display font-semibold
-                  transition-all duration-300 border backdrop-blur-md
-                  ${
-                    isActive
-                      ? `${colors.bg} ${colors.text} ${colors.border} shadow-lg ring-1 ring-white/20`
-                      : "bg-card/40 text-muted-foreground hover:text-foreground border-border"
-                  }
-                  ${colors.glow}
-                `}
+                className={`flex items-center gap-3 px-6 py-3 rounded-xl font-display font-semibold transition-all duration-300 border backdrop-blur-md ${
+                  isActive
+                    ? `${colors.bg} ${colors.text} ${colors.border} shadow-lg ring-1 ring-white/20`
+                    : "bg-card/40 text-muted-foreground hover:text-foreground border-border"
+                } ${colors.glow}`}
               >
                 <Icon size={20} />
                 <span>{category.title}</span>
@@ -295,12 +366,7 @@ export default function Projects() {
           className="mb-8"
         >
           <h3
-            className={`text-2xl font-display font-bold ${
-              categoryColors[
-                projectCategories[activeCategory]
-                  .color as keyof typeof categoryColors
-              ].text
-            }`}
+            className={`text-2xl font-display font-bold ${activeCategoryColors.text}`}
           >
             {projectCategories[activeCategory].title}
           </h3>
@@ -332,11 +398,15 @@ export default function Projects() {
                   onMouseLeave={() => setPausedProject(null)}
                   onFocus={() => setPausedProject(project.title)}
                   onBlur={() => setPausedProject(null)}
-                  className={`
-                    group relative h-full glass-card rounded-3xl overflow-hidden border border-border
-                    ${colors.glow} transition-all duration-300 bg-card/85 backdrop-blur-xl
-                    shadow-[0_8px_30px_hsl(220_20%_10%/0.08)]
-                  `}
+                  onClick={() => setSelectedProject(project)}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      setSelectedProject(project);
+                    }
+                  }}
+                  tabIndex={0}
+                  className={`group relative h-full glass-card rounded-3xl overflow-hidden border border-border ${colors.glow} bg-card/85 backdrop-blur-xl cursor-pointer shadow-[0_8px_30px_hsl(220_20%_10%/0.08)] transition-all duration-300 hover:-translate-y-1`}
                 >
                   <div className="relative h-64 md:h-72 p-4">
                     <div className="relative h-full w-full rounded-2xl border border-border bg-gradient-to-br from-muted via-card to-muted/70 shadow-sm overflow-hidden">
@@ -357,7 +427,7 @@ export default function Projects() {
                             prefersReducedMotion ? undefined : { opacity: 0 }
                           }
                           transition={{ duration: 0.45 }}
-                          className="relative z-10 w-full h-full object-contain p-3"
+                          className="relative z-10 w-full h-full object-contain p-3 transition-all duration-300 group-hover:scale-[1.02] group-hover:brightness-[0.92] dark:group-hover:brightness-[0.82]"
                         />
                       </AnimatePresence>
 
@@ -369,15 +439,22 @@ export default function Projects() {
                         <Icon size={22} />
                       </div>
 
+                      <div className="absolute inset-0 z-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                        <div className="absolute inset-0 bg-background/35 dark:bg-background/20 backdrop-blur-[3px] transition-all duration-300" />
+                        <div className="relative px-4 py-2 rounded-full bg-card/85 dark:bg-card/70 backdrop-blur-md border border-border text-sm md:text-base font-body font-semibold text-foreground shadow-[0_8px_24px_hsl(var(--foreground)/0.08)] dark:shadow-[0_8px_24px_hsl(0_0%_0%/0.28)]">
+                          Click for details
+                        </div>
+                      </div>
+
                       {hasMultipleImages && (
-                        <div className="absolute bottom-3 left-1/2 z-20 -translate-x-1/2 flex gap-2">
+                        <div className="absolute bottom-3 left-1/2 z-20 -translate-x-1/2 flex gap-2 rounded-full bg-background/70 dark:bg-background/35 backdrop-blur-md px-3 py-1.5 border border-border">
                           {project.images.map((_, dotIndex) => (
                             <span
                               key={dotIndex}
-                              className={`w-2.5 h-2.5 rounded-full transition-all ${
+                              className={`rounded-full transition-all duration-300 ${
                                 dotIndex === currentImageIndex
-                                  ? "bg-primary scale-110"
-                                  : "bg-foreground/20"
+                                  ? "w-6 h-2.5 bg-primary dark:bg-secondary shadow-[0_0_12px_hsl(var(--primary)/0.45)] dark:shadow-[0_0_12px_hsl(var(--secondary)/0.45)]"
+                                  : "w-2.5 h-2.5 bg-slate-500/35 dark:bg-white/25"
                               }`}
                             />
                           ))}
@@ -393,8 +470,8 @@ export default function Projects() {
                       {project.title}
                     </h3>
 
-                    <p className="text-muted-foreground font-body text-base mb-5 leading-relaxed line-clamp-4">
-                      {project.description}
+                    <p className="text-muted-foreground font-body text-base mb-5 leading-relaxed line-clamp-3">
+                      {project.shortDescription}
                     </p>
 
                     <div className="flex flex-wrap gap-2 mb-5">
@@ -415,6 +492,7 @@ export default function Projects() {
                           target="_blank"
                           rel="noopener noreferrer"
                           whileHover={{ scale: 1.05 }}
+                          onClick={(e) => e.stopPropagation()}
                           className="p-3 bg-muted/50 border border-border rounded-xl text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
                           aria-label={`Open ${project.title} GitHub repository`}
                         >
@@ -428,6 +506,7 @@ export default function Projects() {
                           target="_blank"
                           rel="noopener noreferrer"
                           whileHover={{ scale: 1.02 }}
+                          onClick={(e) => e.stopPropagation()}
                           className={`flex items-center gap-2 px-4 py-3 ${colors.bg} ${colors.text} border ${colors.border} rounded-xl font-body font-semibold text-sm ${colors.hover} transition-colors`}
                         >
                           <ExternalLink size={16} />
@@ -442,6 +521,164 @@ export default function Projects() {
           })}
         </div>
       </div>
+
+      <AnimatePresence>
+        {selectedProject && (
+          <motion.div
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            <div
+              className="absolute inset-0 bg-background/70 dark:bg-black/70 backdrop-blur-md"
+              onClick={() => setSelectedProject(null)}
+            />
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.94, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.96, y: 10 }}
+              transition={{ duration: 0.25 }}
+              className="relative z-10 w-full max-w-6xl max-h-[90vh] overflow-hidden glass-card rounded-3xl border border-border bg-card/95 shadow-[0_24px_80px_hsl(220_20%_10%/0.22)]"
+            >
+              <div className="flex items-center justify-between px-6 py-4 border-b border-border">
+                <div className="flex items-center gap-3">
+                  <div
+                    className={`p-2 rounded-xl border border-border bg-muted/50 ${activeCategoryColors.text}`}
+                  >
+                    <selectedProject.icon size={22} />
+                  </div>
+                  <div>
+                    <h3 className="text-xl md:text-2xl font-display font-bold text-foreground">
+                      {selectedProject.title}
+                    </h3>
+                    <p className="text-sm text-muted-foreground font-body">
+                      Detailed project view
+                    </p>
+                  </div>
+                </div>
+
+                <button
+                  type="button"
+                  onClick={() => setSelectedProject(null)}
+                  className="p-2 rounded-xl border border-border bg-muted/50 text-muted-foreground hover:text-foreground hover:bg-muted transition-colors"
+                  aria-label="Close project details"
+                >
+                  <X size={20} />
+                </button>
+              </div>
+
+              <div className="grid lg:grid-cols-[1.2fr_0.8fr] max-h-[calc(90vh-73px)]">
+                <div className="p-6 border-b lg:border-b-0 lg:border-r border-border">
+                  <div className="relative h-[320px] md:h-[420px] w-full rounded-2xl border border-border bg-gradient-to-br from-muted via-card to-muted/70 overflow-hidden shadow-sm">
+                    <div className="absolute inset-0 opacity-40 bg-[radial-gradient(circle_at_top_left,hsl(var(--primary)/0.08),transparent_35%),radial-gradient(circle_at_bottom_right,hsl(var(--secondary)/0.08),transparent_35%)]" />
+
+                    <AnimatePresence mode="wait">
+                      <motion.img
+                        key={`${selectedProject.title}-${selectedImageIndex}`}
+                        src={selectedImage}
+                        alt={`${selectedProject.title} screenshot ${selectedImageIndex + 1}`}
+                        loading="lazy"
+                        decoding="async"
+                        initial={prefersReducedMotion ? false : { opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={prefersReducedMotion ? undefined : { opacity: 0 }}
+                        transition={{ duration: 0.35 }}
+                        className="relative z-10 w-full h-full object-contain p-4"
+                      />
+                    </AnimatePresence>
+
+                    <div className="absolute inset-0 bg-gradient-to-t from-background/20 via-transparent to-transparent" />
+                  </div>
+
+                  {selectedProject.images.length > 1 && (
+                    <div className="mt-4 flex justify-center">
+                      <div className="flex gap-2 rounded-full bg-background/75 dark:bg-background/35 backdrop-blur-md px-3 py-2 border border-border">
+                        {selectedProject.images.map((_, dotIndex) => (
+                          <button
+                            key={dotIndex}
+                            type="button"
+                            onClick={() =>
+                              setProjectImage(selectedProject.title, dotIndex)
+                            }
+                            className={`rounded-full transition-all duration-300 ${
+                              dotIndex === selectedImageIndex
+                                ? "w-7 h-2.5 bg-primary dark:bg-secondary shadow-[0_0_14px_hsl(var(--primary)/0.45)] dark:shadow-[0_0_14px_hsl(var(--secondary)/0.45)]"
+                                : "w-2.5 h-2.5 bg-slate-500/35 dark:bg-white/25 hover:bg-slate-500/55 dark:hover:bg-white/40"
+                            }`}
+                            aria-label={`Show image ${dotIndex + 1}`}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                <div className="p-6 overflow-y-auto">
+                  <div className="space-y-6">
+                    <div>
+                      <h4 className="text-sm uppercase tracking-wider text-muted-foreground font-display mb-2">
+                        Overview
+                      </h4>
+                      <p className="text-base md:text-lg leading-relaxed text-foreground font-body">
+                        {selectedProject.description}
+                      </p>
+                    </div>
+
+                    <div>
+                      <h4 className="text-sm uppercase tracking-wider text-muted-foreground font-display mb-3">
+                        Technologies
+                      </h4>
+                      <div className="flex flex-wrap gap-2">
+                        {selectedProject.tech.map((tech) => (
+                          <span
+                            key={tech}
+                            className="px-3 py-1.5 text-sm font-body bg-muted/60 border border-border rounded-full text-foreground"
+                          >
+                            {tech}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    <div>
+                      <h4 className="text-sm uppercase tracking-wider text-muted-foreground font-display mb-3">
+                        Links
+                      </h4>
+                      <div className="flex flex-wrap gap-3">
+                        {selectedHasGithub && (
+                          <a
+                            href={selectedProject.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="inline-flex items-center gap-2 px-4 py-3 rounded-xl border border-border bg-muted/50 text-foreground hover:bg-muted transition-colors"
+                          >
+                            <Github size={18} />
+                            GitHub
+                          </a>
+                        )}
+
+                        {selectedHasDemo && (
+                          <a
+                            href={selectedProject.demo}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={`inline-flex items-center gap-2 px-4 py-3 rounded-xl border ${activeCategoryColors.border} ${activeCategoryColors.bg} ${activeCategoryColors.text} ${activeCategoryColors.hover} transition-colors`}
+                          >
+                            <ExternalLink size={18} />
+                            View Project
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
