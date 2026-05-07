@@ -1,110 +1,148 @@
-# 🚀 3D Interactive Developer Portfolio
+# 🚀 Ahmed Boudhina — Portfolio
 
-![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![Three.js](https://img.shields.io/badge/Three.js-000000?style=for-the-badge&logo=three.dot.js&logoColor=white)
-![TailwindCSS](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
-![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white)
-![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
+<p align="center">
+  <img src="https://img.shields.io/badge/React-Portfolio-61DAFB?style=for-the-badge&logo=react&logoColor=black" />
+  <img src="https://img.shields.io/badge/TypeScript-Modern%20UI-3178C6?style=for-the-badge&logo=typescript&logoColor=white" />
+  <img src="https://img.shields.io/badge/Vite-Fast%20Build-646CFF?style=for-the-badge&logo=vite&logoColor=white" />
+  <img src="https://img.shields.io/badge/GitHub%20Pages-Deployed-222222?style=for-the-badge&logo=githubpages&logoColor=white" />
+</p>
 
-An immersive, high-performance 3D portfolio designed to showcase a diverse technical background in **Game Development**, **Artificial Intelligence**, and **Full-Stack Web Development**.
+<p align="center">
+  <b>Building modern web experiences with creativity, structure, and impact.</b>
+</p>
 
-🔗 **Live Demo:** [https://3d-interactive-portfolio-609zp2axf.vercel.app/](https://3d-interactive-portfolio-fawn.vercel.app/)
+<p align="center">
+  <a href="https://boudhinaa.github.io/portfolio/">🌐 Live Demo</a>
+  •
+  <a href="https://github.com/BOUDHINAA/portfolio">📂 Repository</a>
+  •
+  <a href="https://www.linkedin.com/in/ahmed-boudhina/">💼 LinkedIn</a>
+</p>
 
 ---
 
-## 🌟 Overview
+## ✨ About
 
-This portfolio goes beyond the traditional static website, offering an interactive experience that utilizes 3D graphics and modern UI/UX principles.
+This repository contains my personal portfolio website, built to showcase my background, experience, and selected projects in a modern and interactive way.
 
-- **Immersive 3D Experience:** Integrated Three.js and React Three Fiber for a depth-driven interface.
-- **Dynamic Project Switching:** A categorized gallery that filters projects (Games, AI, Web) in real-time.
-- **URL Hash Navigation:** Custom routing allows users to jump directly to specific categories like `#ai` or `#projects`.
-- **Responsive Cyberpunk UI:** Fully optimized for mobile and desktop with sleek glassmorphism and glowing effects.
+It reflects both my technical skills and my design preferences through:
+- 🎨 a polished and animated interface
+- 🌙 light and dark mode support
+- 📂 expandable project cards with detailed views
+- 📬 a working contact form
+- 🚀 deployment with GitHub Pages and GitHub Actions
 
 ---
 
 ## 🛠️ Tech Stack
 
-| Category | Technologies Used |
-| :--- | :--- |
-| **Frontend Framework** | React 18 (Vite), TypeScript |
-| **Styling** | Tailwind CSS (Utility-first) |
-| **3D Rendering** | Three.js, React Three Fiber, Drei |
-| **Animations** | Framer Motion (Scroll & State triggers) |
-| **Icons** | Lucide React |
+### Frontend
+- ⚛️ React
+- 🟦 TypeScript
+- ⚡ Vite
+- 🎨 Tailwind CSS
+- 🎞️ Framer Motion
+- 🧩 shadcn/ui
+
+### Tools & Services
+- 🐙 GitHub
+- 🔄 GitHub Actions
+- 🌍 GitHub Pages
+- 📩 EmailJS
 
 ---
 
-## 📂 Featured Projects
+## 🎯 Features
 
-### 🧠 AI & Machine Learning
-* **NYAYA.ai:** A Next-Gen Legal Intelligence Platform using RAG & Llama-3 to simplify the Indian Constitution.
-* **SafeRoute AI:** AI-powered navigation analyzing road geometry and infrastructure for safer travel.
-
-### 🎮 Game Development (Unity)
-* **Mythical Dungeon:** A 3D Action-RPG dungeon crawler built in Unity.
-* **Sharp Shooter:** Fast-paced FPS with wave-based drone combat.
-* **Rocket Boost:** Physics-based 2D sci-fi platformer.
-* **Mini Golf:** 3D arcade physics game with multi-level design.
-
-### 🌐 Web Development
-* **Gaming Portal:** Cyberpunk developer portal featuring global leaderboards and embedded HTML5 games.
+- ✅ Responsive design for desktop and mobile
+- ✅ Smooth animations and interactive UI
+- ✅ Expandable project cards
+- ✅ Auto-rotating project previews
+- ✅ Light / Dark mode
+- ✅ Custom cursor experience
+- ✅ Contact section with email integration
+- ✅ CI/CD deployment pipeline with GitHub Actions
 
 ---
 
-## 🚀 Getting Started
+## 📌 Featured Projects
 
-To run this project locally, follow these steps:
+### 🌐 Nexits Platform Contributions
+Contributed to scalable full stack features, reusable UI components, and validation flows in a production startup environment.
 
-### 1. Clone the repository
-```bash
-git clone https://github.com/Priyanksolanki9853/3d-interactive-portfolio.git
-```
+### 💼 Opportunify
+A MERN-based job hunt platform with chatbot support and OCR-powered resume reading features.
 
-### 2. Navigate to the project folder
-```bash
-cd 3d-interactive-portfolio
-```
+### 🏢 University Dorm Management System
+A full stack platform built to manage student housing, room allocation, and administrative workflows.
 
-### 3. Install dependencies
-```bash
+### 🌱 Carbon Footprint By Trip
+A trip-based calculator that estimates both carbon footprint and travel cost, with export-oriented recap features.
+
+### 🧠 CX Maturity Gamified Platform
+A gamified platform designed to help companies assess customer experience maturity through interactive challenges and guided progression.
+
+---
+
+## 🖼️ Preview
+
+```text
+Home • About • Projects • Skills • Contact
+Interactive UI • Expandable cards • Theme toggle • Animations
+
+You can explore the live version here:
+
+👉 https://boudhinaa.github.io/portfolio/
+
+📂 Project Structure
+src/
+├── components/      # Reusable UI components
+├── pages/           # Main pages
+├── assets/          # Local assets
+├── App.tsx          # Routing and layout
+├── main.tsx         # App entry point
+└── index.css        # Global styles
+🚀 Getting Started
+1. Clone the repository
+git clone https://github.com/BOUDHINAA/portfolio.git
+cd portfolio
+2. Install dependencies
 npm install
-```
-
-### 4. Start the development server
-```bash
+3. Run locally
 npm run dev
-```
+4. Build for production
+npm run build
+5. Preview production build
+npm run preview
+🌍 Deployment
 
----
+This portfolio is deployed using GitHub Pages with GitHub Actions.
 
-## 🔧 Deployment
+Every push to the main branch triggers:
 
-This project is optimized for **Vercel**. Every push to the `main` branch automatically triggers a new build and deployment.
+dependency installation
+production build with Vite
+deployment of the dist folder to GitHub Pages
+📬 Contact
+📧 Email: ahmedboudhina@live.com
+💼 LinkedIn: Ahmed Boudhina
+🐙 GitHub: BOUDHINAA
+👨‍💻 Author
 
-- **Build Command:** `npm run build`
-- **Output Directory:** `dist`
+Ahmed Boudhina
+Computer Science Engineer specialized in web technologies, passionate about building modern, scalable, and user-focused applications.
 
----
+⭐ Support
 
-## 📬 Contact
+If you like this project, feel free to:
 
-**Priyank Solanki**
-- **GitHub:** [@Priyanksolanki9853](https://github.com/Priyanksolanki9853)
-- **Email:** [priyanksolanki9853@gmail.com]
-- **LinkedIn:** [Priyanksolanki9853](https://www.linkedin.com/in/priyanksolanki9853/)
+⭐ star the repo
+🍴 fork it
+📩 reach out for collaboration
+📜 License
 
----
+This project is open for inspiration and personal learning.
+Please contact me before reusing it commercially.
 
-## ⬆️ How to push this to GitHub
 
-To save this README file to your repository, run these commands in your terminal:
-
-```bash
-git add README.md
-git commit -m "Docs: Complete professional README"
-git push origin main
-```
-
----
-*Created with ❤️ by Priyank Solanki*
+For an even more premium version, I can make you one with a centered banner section, animated-style badges, and a more “develop

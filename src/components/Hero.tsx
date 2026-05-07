@@ -33,7 +33,7 @@ export default function Hero() {
             <div className="relative">
               <div className="w-40 h-40 rounded-full border-4 border-primary overflow-hidden animate-glow-pulse">
                 <img
-                  src="/photo.jpg"
+                  src={`${import.meta.env.BASE_URL}photo.jpg`}
                   alt="Ahmed Boudhina"
                   className="w-full h-full object-cover"
                 />
