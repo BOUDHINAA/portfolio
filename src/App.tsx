@@ -14,11 +14,10 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <BrowserRouter basename={import.meta.env.BASE_URL}>
         {/* 2. Added wrapper div for global styles & overflow protection */}
-        <div className="bg-background text-foreground overflow-x-hidden"> 
+        <div className="bg-background text-foreground overflow-x-hidden">
           <CustomCursor /> {/* <--- 3. Add the component here */}
-          
           <Routes>
             <Route path="/" element={<Index />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
