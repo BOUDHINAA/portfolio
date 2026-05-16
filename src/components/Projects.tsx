@@ -17,6 +17,8 @@ import {
   Leaf,
   Gamepad2,
   X,
+  ChevronLeft,
+  ChevronRight,
 } from "lucide-react";
 import { Tilt } from "react-tilt";
 
@@ -88,8 +90,7 @@ const projectCategories: Record<string, ProjectCategory> = {
           "Opportunify is a MERN-based job hunt platform created to make the application process more efficient and interactive for job seekers. The project combines a modern user interface with practical job-search features, including a chatbot experience and OCR-based resume reading to simplify how users upload, understand, and manage their profiles. It was designed as a full stack application with a strong focus on usability, structured data flow, and features that solve real user pain points.",
         images: [
           `${import.meta.env.BASE_URL}Opportunify-1.png`,
-          `${import.meta.env.BASE_URL}Opportunify-2.png`,
-          `${import.meta.env.BASE_URL}Opportunify-3.png`,
+          `${import.meta.env.BASE_URL}Opportunify-2.png`,`${import.meta.env.BASE_URL}Opportunify-3.png`,
           `${import.meta.env.BASE_URL}Opportunify-4.png`,
           `${import.meta.env.BASE_URL}Opportunify-5.png`,
         ],
@@ -212,7 +213,6 @@ export default function Projects() {
 
   const [activeCategory, setActiveCategory] = useState<CategoryKey>("websites");
   const [imageIndexes, setImageIndexes] = useState<Record<string, number>>({});
-  const [pausedProject, setPausedProject] = useState<string | null>(null);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const defaultTiltOptions = {
@@ -242,15 +242,26 @@ export default function Projects() {
   }, []);
 
   useEffect(() => {
-    const handleEscape = (event: KeyboardEvent) => {
+    const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
         setSelectedProject(null);
+        return;
+      }
+
+      if (!selectedProject || selectedProject.images.length <= 1) return;
+
+      if (event.key === "ArrowRight") {
+        goToNextImage(selectedProject.title, selectedProject.images.length);
+      }
+
+      if (event.key === "ArrowLeft") {
+        goToPrevImage(selectedProject.title, selectedProject.images.length);
       }
     };
 
-    window.addEventListener("keydown", handleEscape);
-    return () => window.removeEventListener("keydown", handleEscape);
-  }, []);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [selectedProject, imageIndexes]);
 
   useEffect(() => {
     if (selectedProject) {
@@ -263,33 +274,6 @@ export default function Projects() {
       document.body.style.overflow = "";
     };
   }, [selectedProject]);
-
-  useEffect(() => {
-    if (prefersReducedMotion) return;
-    if (selectedProject) return;
-
-    const allProjects = Object.values(projectCategories).flatMap(
-      (category) => category.projects,
-    );
-
-    const interval = window.setInterval(() => {
-      setImageIndexes((prev) => {
-        const next = { ...prev };
-
-        allProjects.forEach((project) => {
-          if (project.images.length <= 1) return;
-          if (pausedProject === project.title) return;
-
-          next[project.title] =
-            ((prev[project.title] ?? 0) + 1) % project.images.length;
-        });
-
-        return next;
-      });
-    }, 3000);
-
-    return () => window.clearInterval(interval);
-  }, [pausedProject, prefersReducedMotion, selectedProject]);
 
   const categoryColors = {
     primary: {
@@ -319,6 +303,20 @@ export default function Projects() {
     setImageIndexes((prev) => ({
       ...prev,
       [projectTitle]: index,
+    }));
+  };
+
+  const goToNextImage = (projectTitle: string, total: number) => {
+    setImageIndexes((prev) => ({
+      ...prev,
+      [projectTitle]: ((prev[projectTitle] ?? 0) + 1) % total,
+    }));
+  };
+
+  const goToPrevImage = (projectTitle: string, total: number) => {
+    setImageIndexes((prev) => ({
+      ...prev,
+      [projectTitle]: ((prev[projectTitle] ?? 0) - 1 + total) % total,
     }));
   };
 
@@ -447,10 +445,6 @@ export default function Projects() {
                   initial={{ opacity: 0, y: 50 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
-                  onMouseEnter={() => setPausedProject(project.title)}
-                  onMouseLeave={() => setPausedProject(null)}
-                  onFocus={() => setPausedProject(project.title)}
-                  onBlur={() => setPausedProject(null)}
                   onClick={() => setSelectedProject(project)}
                   onKeyDown={(e) => {
                     if (e.key === "Enter" || e.key === " ") {
@@ -481,7 +475,7 @@ export default function Projects() {
                                   ? undefined
                                   : { opacity: 0 }
                               }
-                              transition={{ duration: 0.45 }}
+                              transition={{ duration: 0.35 }}
                               className="relative z-10 w-full h-full object-contain p-3 transition-all duration-300 group-hover:scale-[1.02] group-hover:brightness-[0.92] dark:group-hover:brightness-[0.82]"
                             />
                           </AnimatePresence>
@@ -494,6 +488,40 @@ export default function Projects() {
                               Click for details
                             </div>
                           </div>
+
+                          {hasMultipleImages && (
+                            <>
+                              <button
+                                type="button"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  goToPrevImage(
+                                    project.title,
+                                    project.images.length,
+                                  );
+                                }}
+                                className="absolute left-3 top-1/2 z-30 -translate-y-1/2 w-9 h-9 rounded-full bg-background/75 dark:bg-background/45 backdrop-blur-md border border-border flex items-center justify-center text-foreground opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity shadow-sm"
+                                aria-label={`Previous image for ${project.title}`}
+                              >
+                                <ChevronLeft size={18} />
+                              </button>
+
+                              <button
+                                type="button"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  goToNextImage(
+                                    project.title,
+                                    project.images.length,
+                                  );
+                                }}
+                                className="absolute right-3 top-1/2 z-30 -translate-y-1/2 w-9 h-9 rounded-full bg-background/75 dark:bg-background/45 backdrop-blur-md border border-border flex items-center justify-center text-foreground opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity shadow-sm"
+                                aria-label={`Next image for ${project.title}`}
+                              >
+                                <ChevronRight size={18} />
+                              </button>
+                            </>
+                          )}
                         </>
                       ) : (
                         <ProjectPreviewFallback
@@ -513,13 +541,19 @@ export default function Projects() {
                       {hasMultipleImages && (
                         <div className="absolute bottom-3 left-1/2 z-20 -translate-x-1/2 flex gap-2 rounded-full bg-background/70 dark:bg-background/35 backdrop-blur-md px-3 py-1.5 border border-border">
                           {project.images.map((_, dotIndex) => (
-                            <span
+                            <button
                               key={dotIndex}
+                              type="button"
+                              onClick={(e) => {
+                                e.stopPropagation();
+                                setProjectImage(project.title, dotIndex);
+                              }}
                               className={`rounded-full transition-all duration-300 ${
                                 dotIndex === currentImageIndex
                                   ? "w-6 h-2.5 bg-primary dark:bg-secondary shadow-[0_0_12px_hsl(var(--primary)/0.45)] dark:shadow-[0_0_12px_hsl(var(--secondary)/0.45)]"
                                   : "w-2.5 h-2.5 bg-slate-500/35 dark:bg-white/25"
                               }`}
+                              aria-label={`Show image ${dotIndex + 1} for ${project.title}`}
                             />
                           ))}
                         </div>
@@ -658,6 +692,38 @@ export default function Projects() {
                         </AnimatePresence>
 
                         <div className="absolute inset-0 bg-gradient-to-t from-background/20 via-transparent to-transparent" />
+
+                        {selectedProject.images.length > 1 && (
+                          <>
+                            <button
+                              type="button"
+                              onClick={() =>
+                                goToPrevImage(
+                                  selectedProject.title,
+                                  selectedProject.images.length,
+                                )
+                              }
+                              className="absolute left-4 top-1/2 z-30 -translate-y-1/2 w-10 h-10 rounded-full bg-background/80 dark:bg-background/45 backdrop-blur-md border border-border flex items-center justify-center text-foreground shadow-md"
+                              aria-label="Previous project image"
+                            >
+                              <ChevronLeft size={20} />
+                            </button>
+
+                            <button
+                              type="button"
+                              onClick={() =>
+                                goToNextImage(
+                                  selectedProject.title,
+                                  selectedProject.images.length,
+                                )
+                              }
+                              className="absolute right-4 top-1/2 z-30 -translate-y-1/2 w-10 h-10 rounded-full bg-background/80 dark:bg-background/45 backdrop-blur-md border border-border flex items-center justify-center text-foreground shadow-md"
+                              aria-label="Next project image"
+                            >
+                              <ChevronRight size={20} />
+                            </button>
+                          </>
+                        )}
                       </>
                     ) : (
                       <ProjectPreviewFallback

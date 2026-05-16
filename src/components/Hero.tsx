@@ -103,7 +103,7 @@ export default function Hero() {
             </a>
 
             <a
-              href={`${import.meta.env.BASE_URL}Ahmed_Boudhina_CV.pdf`}
+              href={`${import.meta.env.BASE_URL}files/Ahmed_Boudhina_CV.pdf`}
               download
               className="px-6 md:px-8 py-3.5 md:py-4 border-2 border-primary/60 text-primary font-display font-bold rounded-xl bg-card/75 backdrop-blur-md hover:bg-primary hover:text-primary-foreground transition-all hover:scale-[1.03] flex items-center justify-center gap-2 shadow-sm"
             >
