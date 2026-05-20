@@ -1,0 +1,135 @@
+{
+  "nav": {
+    "brand": "Ahmed Boudhina",
+    "home": "Accueil",
+    "about": "À propos",
+    "projects": "Projets",
+    "aiProjects": "Projets IA",
+    "skills": "Compétences",
+    "contact": "Contact",
+    "toggleMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu",
+    "languageSwitcher": "Sélecteur de langue",
+    "languageEnglish": "Passer en anglais",
+    "languageFrench": "Passer en français"
+  },
+  "hero": {
+    "photoAlt": "Ahmed Boudhina",
+    "welcome": "BIENVENUE DANS MON UNIVERS DIGITAL",
+    "titleFirst": "Ahmed",
+    "titleLast": "Boudhina",
+    "tag1": "⚛️ Développeur Full-Stack",
+    "tag2": "🚀 Ingénieur Web",
+    "tag3": "🧠 Produits orientés IA",
+    "description": "Je conçois des applications web modernes avec un fort accent sur des interfaces propres, une architecture scalable et des expériences utilisateur interactives. Des plateformes full-stack prêtes pour la production aux produits gamifiés orientés IA, j’aime transformer des idées en expériences digitales soignées.",
+    "viewProjects": "Voir les projets",
+    "resume": "CV",
+    "githubLabel": "Profil GitHub",
+    "linkedinLabel": "Profil LinkedIn"
+  },
+  "about": {
+    "titleFirst": "À propos",
+    "titleLast": "de moi",
+    "subtitle": "Un développeur full stack passionné par la création d’expériences digitales modernes, scalables et centrées sur l’utilisateur.",
+    "description": "Je suis un développeur full stack passionné par la création d’expériences digitales modernes. De la conception d’interfaces responsives et de backends robustes à l’exploration de produits orientés IA et d’architectures scalables, j’aime transformer des idées en solutions utiles et impactantes.",
+    "location": "Tunisie",
+    "role": "Ingénieur logiciel",
+    "currentFocusTitle": "Focus actuel",
+    "currentFocusDescription": "Construire des produits full stack, renforcer mes compétences en ingénierie logicielle, et explorer l’IA, le DevOps et les expériences utilisateur gamifiées.",
+    "domains": {
+      "fullStack": {
+        "title": "Développement Full Stack",
+        "description": "Création d’applications web scalables avec React, Next.js, TypeScript, Node.js et PostgreSQL."
+      },
+      "ai": {
+        "title": "IA & Solutions Intelligentes",
+        "description": "Exploration d’expériences orientées IA, de plateformes gamifiées et de produits digitaux intelligents."
+      },
+      "devops": {
+        "title": "DevOps & Outils",
+        "description": "Utilisation de Docker, Jenkins, Grafana, Prometheus et de workflows modernes pour améliorer le développement et le déploiement."
+      },
+      "problemSolving": {
+        "title": "Résolution de Problèmes",
+        "description": "Passionné par la conception de solutions efficaces, d’architectures propres et d’expériences utilisateur impactantes."
+      }
+    }
+  },
+  "projects": {
+    "sectionTitleFirst": "Projets",
+    "sectionTitleLast": "phares",
+    "sectionSubtitle": "Applications full stack, plateformes orientées IA et produits digitaux à fort impact",
+    "clickForDetails": "Cliquer pour voir les détails",
+    "previewComingSoon": "Aperçu bientôt disponible",
+    "viewProject": "Voir le projet",
+    "detailedProjectView": "Vue détaillée du projet",
+    "closeProjectDetails": "Fermer les détails du projet",
+    "overview": "Présentation",
+    "technologies": "Technologies",
+    "links": "Liens",
+    "imageAlt": "Capture {{index}} de {{title}}",
+    "previousImageFor": "Image précédente pour {{title}}",
+    "nextImageFor": "Image suivante pour {{title}}",
+    "showImageFor": "Afficher l’image {{index}} pour {{title}}",
+    "previousProjectImage": "Image précédente du projet",
+    "nextProjectImage": "Image suivante du projet",
+    "showImage": "Afficher l’image {{index}}",
+    "openGithubFor": "Ouvrir le dépôt GitHub de {{title}}",
+    "categories": {
+      "websites": {
+        "title": "Expérience Web",
+        "subtitle": "Développement web moderne et professionnel"
+      },
+      "ai": {
+        "title": "Plateformes IA & Gamifiées",
+        "subtitle": "Produits interactifs et orientés intelligence artificielle"
+      }
+    },
+    "items": {
+      "nexits": {
+        "title": "Contributions à la plateforme Nexits",
+        "shortDescription": "Contribution à des fonctionnalités full stack scalables, des composants UI réutilisables et des flux de validation dans un environnement startup en production.",
+        "description": "Chez Nexits, j’ai contribué à une plateforme en production en développant et en améliorant des fonctionnalités full stack dans un environnement startup collaboratif. Mon travail comprenait la création de composants UI réutilisables avec Next.js et TypeScript, l’amélioration des flux de validation, et le soutien d’une architecture produit plus propre côté front-end et back-end. J’ai aussi travaillé avec des outils comme tRPC, PostgreSQL, Zod et shadcn/ui afin de construire des expériences utilisateur scalables, maintenables et cohérentes."
+      },
+      "opportunify": {
+        "title": "Opportunify",
+        "shortDescription": "Une plateforme de recherche d’emploi en MERN avec chatbot et lecture de CV via OCR.",
+        "description": "Opportunify est une plateforme de recherche d’emploi basée sur la stack MERN, conçue pour rendre le processus de candidature plus efficace et plus interactif pour les chercheurs d’emploi. Le projet combine une interface moderne avec des fonctionnalités pratiques, notamment un chatbot et une lecture de CV par OCR afin de simplifier l’import, la compréhension et la gestion du profil utilisateur. Elle a été pensée comme une application full stack avec un fort accent sur l’utilisabilité, la circulation structurée des données et des fonctionnalités répondant à de vrais besoins."
+      },
+      "dorm": {
+        "title": "Système de gestion des foyers universitaires",
+        "shortDescription": "Une plateforme full stack pour gérer le logement étudiant, l’attribution des chambres et les workflows administratifs.",
+        "description": "Ce projet est une plateforme full stack de gestion des foyers universitaires conçue pour simplifier les opérations de logement des étudiants et des administrateurs. Elle prend en charge des workflows clés comme l’attribution des chambres, la gestion des résidents et la coordination administrative à travers une interface structurée et pratique. Développé avec Angular, Spring Boot et SQL, le projet met l’accent sur un front-end responsive et une architecture back-end solide pour gérer efficacement la logique métier et les données persistantes."
+      },
+      "carbon": {
+        "title": "Carbon Footprint By Trip",
+        "shortDescription": "Un calculateur de trajet qui estime à la fois l’empreinte carbone et le coût du voyage avec export du récapitulatif.",
+        "description": "Carbon Footprint By Trip est un calculateur de trajet qui estime à la fois l’impact environnemental et le coût du voyage à partir du type de transport, de la distance, du nombre de passagers et des détails du trajet. L’objectif du projet était de proposer une expérience pratique et informative permettant aux utilisateurs de simuler des trajets, de comprendre leur empreinte carbone et de consulter un résumé clair du résultat. Il intègre également l’export PDF pour faciliter la sauvegarde et le partage du récapitulatif."
+      },
+      "cxMaturity": {
+        "title": "Plateforme gamifiée d’évaluation de la maturité CX",
+        "shortDescription": "Une plateforme gamifiée qui aide les entreprises à évaluer leur maturité CX à travers des défis interactifs et une progression guidée.",
+        "description": "Ce projet est une plateforme gamifiée conçue pour aider les entreprises à évaluer leur maturité en expérience client à travers des questionnaires, des défis interactifs, une progression guidée et des scénarios métiers orientés IA. Au lieu de présenter l’évaluation comme un simple formulaire statique, l’expérience est structurée pour être plus engageante et stratégique, en encourageant les utilisateurs à progresser tout en réfléchissant à leurs capacités CX. La plateforme combine vision produit, UX design et développement web moderne afin de créer une expérience à la fois informative et immersive."
+      }
+    }
+  },
+  
+  "skills": {
+    "sectionTitleFirst": "Arsenal",
+    "sectionTitleLast": "Technique",
+    "sectionSubtitle": "Langages, frameworks et outils que j’utilise pour créer des produits digitaux modernes et scalables",
+    "toolsTitle": "Outils & Technologies",
+    "categories": {
+      "coreLanguages": "Langages principaux",
+      "frontend": "Développement Frontend",
+      "backend": "Backend & Bases de données",
+      "devops": "DevOps & Workflow"
+    },
+    "stats": {
+      "projects": "Projets",
+      "experiences": "Expériences professionnelles",
+      "technologies": "Technologies"
+    }
+  }
+
+}

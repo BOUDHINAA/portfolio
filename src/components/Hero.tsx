@@ -1,15 +1,15 @@
 import { motion } from "framer-motion";
 import { Github, Linkedin, ChevronDown, Download } from "lucide-react";
-import Scene3D from "./Scene3D";
+import { useTranslation } from "react-i18next";
 
 export default function Hero() {
+  const { t } = useTranslation();
+
   return (
     <section
       id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden light-stars pt-28 pb-12 md:pt-32 md:pb-16 lg:pt-24"
     >
-     
-
       <div className="absolute inset-0 cyber-grid opacity-25 dark:opacity-30" />
       <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-transparent to-background pointer-events-none" />
 
@@ -25,7 +25,7 @@ export default function Hero() {
               <div className="w-28 h-28 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-primary/60 shadow-[0_16px_40px_hsl(var(--primary)/0.16)] dark:shadow-[0_0_30px_hsl(var(--primary)/0.28)] bg-card/70 backdrop-blur-md mx-auto">
                 <img
                   src={`${import.meta.env.BASE_URL}photo.webp`}
-                  alt="Ahmed Boudhina"
+                  alt={t("hero.photoAlt", "Ahmed Boudhina")}
                   className="w-full h-full object-cover object-[50%_35%] scale-[1.02]"
                 />
               </div>
@@ -41,7 +41,7 @@ export default function Hero() {
             transition={{ delay: 0.15 }}
             className="text-primary font-display text-[11px] md:text-sm mb-4 tracking-[0.22em] md:tracking-[0.25em]"
           >
-            WELCOME TO MY DIGITAL SPACE
+            {t("hero.welcome")}
           </motion.p>
 
           <motion.h1
@@ -50,8 +50,10 @@ export default function Hero() {
             transition={{ delay: 0.3 }}
             className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display font-bold mb-5 md:mb-6 leading-tight"
           >
-            <span className="text-foreground">Ahmed </span>
-            <span className="gradient-text text-glow">Boudhina</span>
+            <span className="text-foreground">{t("hero.titleFirst")} </span>
+            <span className="gradient-text text-glow">
+              {t("hero.titleLast")}
+            </span>
           </motion.h1>
 
           <motion.div
@@ -61,13 +63,13 @@ export default function Hero() {
             className="flex flex-wrap justify-center gap-2 md:gap-3 mb-7 md:mb-8 max-w-3xl"
           >
             <span className="px-3 md:px-4 py-2 glass-card light-panel rounded-full text-primary font-body text-sm md:text-base font-semibold border border-primary/30">
-              ⚛️ Full-Stack Developer
+              {t("hero.tag1")}
             </span>
             <span className="px-3 md:px-4 py-2 glass-card light-panel rounded-full text-secondary font-body text-sm md:text-base font-semibold border border-secondary/30">
-              🚀 Web Engineer
+              {t("hero.tag2")}
             </span>
             <span className="px-3 md:px-4 py-2 glass-card light-panel rounded-full text-accent font-body text-sm md:text-base font-semibold border border-accent/30">
-              🧠 AI-Powered Products
+              {t("hero.tag3")}
             </span>
           </motion.div>
 
@@ -79,11 +81,7 @@ export default function Hero() {
           >
             <div className="glass-card light-panel rounded-3xl px-5 py-5 md:px-8 md:py-6 border border-border/70">
               <p className="text-base md:text-xl text-muted-foreground font-body leading-relaxed">
-                I build modern web applications with a strong focus on clean
-                interfaces, scalable architecture, and interactive user
-                experiences. From production-ready full-stack platforms to
-                gamified AI-driven products, I enjoy turning ideas into polished
-                digital experiences.
+                {t("hero.description")}
               </p>
             </div>
           </motion.div>
@@ -98,17 +96,17 @@ export default function Hero() {
               href="#projects"
               className="group relative px-6 md:px-8 py-3.5 md:py-4 bg-primary text-primary-foreground font-display font-bold rounded-xl overflow-hidden transition-all hover:scale-[1.03] shadow-[0_10px_24px_hsl(var(--primary)/0.2)] dark:shadow-[0_0_20px_hsl(var(--primary)/0.22)]"
             >
-              <span className="relative z-10">View Projects</span>
+              <span className="relative z-10">{t("hero.viewProjects")}</span>
               <div className="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-primary bg-[length:200%_100%] animate-shimmer opacity-0 group-hover:opacity-100 transition-opacity" />
             </a>
 
             <a
               href={`${import.meta.env.BASE_URL}files/Ahmed_Boudhina_CV.pdf`}
-              download
+              download="Ahmed_Boudhina_CV.pdf"
               className="px-6 md:px-8 py-3.5 md:py-4 border-2 border-primary/60 text-primary font-display font-bold rounded-xl bg-card/75 backdrop-blur-md hover:bg-primary hover:text-primary-foreground transition-all hover:scale-[1.03] flex items-center justify-center gap-2 shadow-sm"
             >
               <Download size={18} />
-              Resume
+              {t("hero.resume")}
             </a>
           </motion.div>
 
@@ -123,18 +121,21 @@ export default function Hero() {
                 icon: Github,
                 href: "https://github.com/BOUDHINAA",
                 color: "hover:text-foreground",
+                label: t("hero.githubLabel", "GitHub profile"),
               },
               {
                 icon: Linkedin,
                 href: "https://www.linkedin.com/in/ahmed-boudhina/",
                 color: "hover:text-blue-500 dark:hover:text-blue-400",
+                label: t("hero.linkedinLabel", "LinkedIn profile"),
               },
-            ].map(({ icon: Icon, href, color }) => (
+            ].map(({ icon: Icon, href, color, label }) => (
               <motion.a
                 key={href}
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={label}
                 whileHover={{ scale: 1.12, y: -4 }}
                 className={`p-3 glass-card light-panel rounded-2xl text-muted-foreground ${color} transition-colors border border-border/70`}
               >
@@ -155,6 +156,7 @@ export default function Hero() {
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 2 }}
           className="text-primary"
+          aria-hidden="true"
         >
           <ChevronDown size={28} />
         </motion.div>

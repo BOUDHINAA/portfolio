@@ -1,0 +1,135 @@
+{
+  "nav": {
+    "brand": "Ahmed Boudhina",
+    "home": "Home",
+    "about": "About",
+    "projects": "Projects",
+    "aiProjects": "AI Projects",
+    "skills": "Skills",
+    "contact": "Contact",
+    "toggleMenu": "Toggle menu",
+    "closeMenu": "Close menu",
+    "languageSwitcher": "Language switcher",
+    "languageEnglish": "Switch to English",
+    "languageFrench": "Switch to French"
+  },
+  "hero": {
+    "photoAlt": "Ahmed Boudhina",
+    "welcome": "WELCOME TO MY DIGITAL SPACE",
+    "titleFirst": "Ahmed",
+    "titleLast": "Boudhina",
+    "tag1": "⚛️ Full-Stack Developer",
+    "tag2": "🚀 Web Engineer",
+    "tag3": "🧠 AI-Powered Products",
+    "description": "I build modern web applications with a strong focus on clean interfaces, scalable architecture, and interactive user experiences. From production-ready full-stack platforms to gamified AI-driven products, I enjoy turning ideas into polished digital experiences.",
+    "viewProjects": "View Projects",
+    "resume": "Resume",
+    "githubLabel": "GitHub profile",
+    "linkedinLabel": "LinkedIn profile"
+  },
+  "about": {
+    "titleFirst": "About",
+    "titleLast": "Me",
+    "subtitle": "A passionate full stack developer focused on building modern, scalable, and user-centered digital experiences.",
+    "description": "I am a full stack developer passionate about building modern digital experiences. From creating responsive interfaces and robust backend systems to exploring AI-driven products and scalable architectures, I enjoy turning ideas into useful and impactful solutions.",
+    "location": "Tunisia",
+    "role": "Software Engineer",
+    "currentFocusTitle": "Current Focus",
+    "currentFocusDescription": "Building full stack products, refining my software engineering skills, and exploring AI, DevOps, and gamified user experiences.",
+    "domains": {
+      "fullStack": {
+        "title": "Full Stack Development",
+        "description": "Building scalable web applications with React, Next.js, TypeScript, Node.js, and PostgreSQL."
+      },
+      "ai": {
+        "title": "AI & Smart Solutions",
+        "description": "Exploring AI-powered experiences, gamified platforms, and intelligent digital products."
+      },
+      "devops": {
+        "title": "DevOps & Tools",
+        "description": "Using Docker, Jenkins, Grafana, Prometheus, and modern workflows to improve development and deployment."
+      },
+      "problemSolving": {
+        "title": "Problem Solving",
+        "description": "Passionate about designing efficient solutions, clean architecture, and impactful user experiences."
+      }
+    }
+  },
+  "projects": {
+    "sectionTitleFirst": "Featured",
+    "sectionTitleLast": "Projects",
+    "sectionSubtitle": "Full stack applications, AI-powered platforms, and impactful digital products",
+    "clickForDetails": "Click for details",
+    "previewComingSoon": "Preview coming soon",
+    "viewProject": "View Project",
+    "detailedProjectView": "Detailed project view",
+    "closeProjectDetails": "Close project details",
+    "overview": "Overview",
+    "technologies": "Technologies",
+    "links": "Links",
+    "imageAlt": "{{title}} screenshot {{index}}",
+    "previousImageFor": "Previous image for {{title}}",
+    "nextImageFor": "Next image for {{title}}",
+    "showImageFor": "Show image {{index}} for {{title}}",
+    "previousProjectImage": "Previous project image",
+    "nextProjectImage": "Next project image",
+    "showImage": "Show image {{index}}",
+    "openGithubFor": "Open GitHub repository for {{title}}",
+    "categories": {
+      "websites": {
+        "title": "Web Experience",
+        "subtitle": "Professional and Modern Web Development"
+      },
+      "ai": {
+        "title": "AI & Gamified Platforms",
+        "subtitle": "AI-Powered and Interactive Products"
+      }
+    },
+    "items": {
+      "nexits": {
+        "title": "Nexits Platform Contributions",
+        "shortDescription": "Contributed to scalable full stack features, reusable UI components, and validation flows in a production startup environment.",
+        "description": "At Nexits, I contributed to a production-grade platform by building and refining full stack features in a collaborative startup environment. My work included developing reusable UI components with Next.js and TypeScript, improving validation flows, and supporting cleaner product architecture across the front end and back end. I also worked with tools such as tRPC, PostgreSQL, Zod, and shadcn/ui to help create scalable, maintainable, and consistent user experiences."
+      },
+      "opportunify": {
+        "title": "Opportunify",
+        "shortDescription": "A MERN-based job hunt platform with chatbot support and OCR-powered resume reading features.",
+        "description": "Opportunify is a MERN-based job hunt platform created to make the application process more efficient and interactive for job seekers. The project combines a modern user interface with practical job-search features, including a chatbot experience and OCR-based resume reading to simplify how users upload, understand, and manage their profiles. It was designed as a full stack application with a strong focus on usability, structured data flow, and features that solve real user pain points."
+      },
+      "dorm": {
+        "title": "University Dorm Management System",
+        "shortDescription": "A full stack platform to manage student housing, room allocation, and administrative workflows.",
+        "description": "This project is a full stack university dorm management platform built to simplify housing operations for students and administrators. It supports key workflows such as room allocation, resident management, and administrative coordination through a structured and practical interface. Built with Angular, Spring Boot, and SQL, the project focused on combining a responsive front end with a solid backend architecture to manage business logic and persistent data efficiently."
+      },
+      "carbon": {
+        "title": "Carbon Footprint By Trip",
+        "shortDescription": "A trip-based calculator that estimates both carbon footprint and travel cost with a recap export.",
+        "description": "Carbon Footprint By Trip is a trip-based calculator that estimates both environmental impact and travel cost using transport type, distance, passenger count, and travel details. The goal of the project was to provide a practical and informative experience where users can simulate trips, understand their carbon footprint, and review a clear summary of the result. It also integrates PDF export to make the trip recap easy to save and share."
+      },
+      "cxMaturity": {
+        "title": "CX Maturity Gamified Platform",
+        "shortDescription": "A gamified platform that helps companies assess CX maturity through interactive challenges and guided progression.",
+        "description": "This project is a gamified platform designed to help companies assess their CX maturity through surveys, interactive challenges, guided progression, and AI-oriented business scenarios. Instead of presenting the assessment as a traditional static form, the experience is structured to feel more engaging and strategic, encouraging users to progress through tasks while reflecting on customer experience capabilities. The platform combines product thinking, UX design, and modern web development to create an experience that is both informative and immersive."
+      }
+    }
+  },
+  
+  "skills": {
+    "sectionTitleFirst": "Technical",
+    "sectionTitleLast": "Arsenal",
+    "sectionSubtitle": "Languages, frameworks, and tools I use to build modern and scalable digital products",
+    "toolsTitle": "Tools & Technologies",
+    "categories": {
+      "coreLanguages": "Core Languages",
+      "frontend": "Frontend Development",
+      "backend": "Backend & Databases",
+      "devops": "DevOps & Workflow"
+    },
+    "stats": {
+      "projects": "Projects",
+      "experiences": "Work Experiences",
+      "technologies": "Technologies"
+    }
+  }
+
+}
