@@ -1,12 +1,14 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useCallback } from "react";
 import {
   motion,
   AnimatePresence,
   useMotionValue,
   useSpring,
-  useTransform,
 } from "framer-motion";
 
+/* ─────────────────────────────────────────
+   Types
+───────────────────────────────────────── */
 interface Particle {
   id: number;
   x: number;
@@ -16,7 +18,36 @@ interface Particle {
   size: number;
   color: string;
   opacity: number;
+  duration: number;
 }
+
+type CursorMode = "default" | "link" | "button" | "text" | "drag";
+
+/* ─────────────────────────────────────────
+   Context detection
+───────────────────────────────────────── */
+function getCursorMode(target: HTMLElement | null): CursorMode {
+  if (!target) return "default";
+  const el = target.closest(
+    'a, button, [role="button"], summary, label[for], select',
+  );
+  if (el) return el.tagName === "A" ? "link" : "button";
+  if (target.closest("input, textarea, [contenteditable]")) return "text";
+  if (target.closest("[draggable]")) return "drag";
+  return "default";
+}
+
+/* Ring size + label per mode */
+const MODE_CONFIG: Record<
+  CursorMode,
+  { size: number; label: string | null; speed: number }
+> = {
+  default: { size: 20, label: null, speed: 2.4 },
+  link: { size: 36, label: "view", speed: 1.4 },
+  button: { size: 32, label: null, speed: 1.6 },
+  text: { size: 4, label: null, speed: 1.0 },
+  drag: { size: 28, label: "drag", speed: 2.0 },
+};
 
 const PARTICLE_COLORS = [
   "hsl(var(--primary))",
@@ -24,223 +55,227 @@ const PARTICLE_COLORS = [
   "hsl(var(--accent))",
 ];
 
+/* ─────────────────────────────────────────
+   Component
+───────────────────────────────────────── */
 export default function ParticleCursor() {
-  const [particles, setParticles] = useState<Particle[]>([]);
   const [isVisible, setIsVisible] = useState(false);
-  const [isPointerDevice, setIsPointerDevice] = useState(true);
-  const [isInteractive, setIsInteractive] = useState(false);
+  const [isPointer, setIsPointer] = useState(true);
+  const [mode, setMode] = useState<CursorMode>("default");
+  const [particles, setParticles] = useState<Particle[]>([]);
+  const [isClicking, setIsClicking] = useState(false);
 
   const particleId = useRef(0);
-  const lastSpawnTime = useRef(0);
+  const lastSpawn = useRef(0);
+  const rafId = useRef<number>(0);
 
-  const mouseX = useMotionValue(-100);
-  const mouseY = useMotionValue(-100);
+  /* Raw mouse position (no spring — used for dot) */
+  const rawX = useMotionValue(-200);
+  const rawY = useMotionValue(-200);
 
-  const ringX = useSpring(
-    useTransform(mouseX, (v) => v - 10),
-    {
-      stiffness: 520,
-      damping: 34,
-      mass: 0.28,
-    },
-  );
+  /* Ring follows with a gentle spring */
+  const springCfg = { stiffness: 480, damping: 32, mass: 0.25 };
+  const ringX = useSpring(rawX, springCfg);
+  const ringY = useSpring(rawY, springCfg);
 
-  const ringY = useSpring(
-    useTransform(mouseY, (v) => v - 10),
-    {
-      stiffness: 520,
-      damping: 34,
-      mass: 0.28,
-    },
-  );
-
-  const dotX = useSpring(
-    useTransform(mouseX, (v) => v - 2.5),
-    {
-      stiffness: 900,
-      damping: 44,
-      mass: 0.18,
-    },
-  );
-
-  const dotY = useSpring(
-    useTransform(mouseY, (v) => v - 2.5),
-    {
-      stiffness: 900,
-      damping: 44,
-      mass: 0.18,
-    },
-  );
-
+  /* ── Detect touch-only devices ── */
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(hover: none), (pointer: coarse)");
-
-    const updatePointerMode = () => {
-      setIsPointerDevice(!mediaQuery.matches);
-    };
-
-    updatePointerMode();
-    mediaQuery.addEventListener("change", updatePointerMode);
-
-    return () => {
-      mediaQuery.removeEventListener("change", updatePointerMode);
-    };
+    const mq = window.matchMedia("(hover: none), (pointer: coarse)");
+    const update = () => setIsPointer(!mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
   }, []);
 
+  /* ── Spawn a particle ── */
+  const spawnParticle = useCallback((x: number, y: number) => {
+    const now = performance.now();
+    if (now - lastSpawn.current < 28) return;
+    lastSpawn.current = now;
+
+    const color =
+      PARTICLE_COLORS[Math.floor(Math.random() * PARTICLE_COLORS.length)];
+    const angle = Math.random() * Math.PI * 2;
+    const speed = Math.random() * 3.5 + 1.5;
+
+    const p: Particle = {
+      id: particleId.current++,
+      x,
+      y,
+      dx: Math.cos(angle) * speed,
+      dy: Math.sin(angle) * speed,
+      size: Math.random() * 2.2 + 1.4,
+      color,
+      opacity: Math.random() * 0.35 + 0.25,
+      duration: Math.random() * 0.2 + 0.5,
+    };
+
+    setParticles((prev) => [...prev.slice(-14), p]);
+  }, []);
+
+  /* ── Mouse event listeners ── */
   useEffect(() => {
-    if (!isPointerDevice) return;
+    if (!isPointer) return;
 
-    const handleMouseMove = (e: MouseEvent) => {
-      mouseX.set(e.clientX);
-      mouseY.set(e.clientY);
+    const onMove = (e: MouseEvent) => {
+      rawX.set(e.clientX);
+      rawY.set(e.clientY);
       setIsVisible(true);
-
-      const target = e.target as HTMLElement | null;
-      const interactive = !!target?.closest(
-        'a, button, [role="button"], input, textarea, select, summary, label',
-      );
-      setIsInteractive(interactive);
-
-      const now = performance.now();
-      if (now - lastSpawnTime.current < 30) return;
-      lastSpawnTime.current = now;
-
-      const color =
-        PARTICLE_COLORS[Math.floor(Math.random() * PARTICLE_COLORS.length)];
-
-      const newParticle: Particle = {
-        id: particleId.current++,
-        x: e.clientX + (Math.random() - 0.5) * 2,
-        y: e.clientY + (Math.random() - 0.5) * 2,
-        dx: (Math.random() - 0.5) * 7,
-        dy: (Math.random() - 0.5) * 7,
-        size: Math.random() * 1.4 + 1.1,
-        color,
-        opacity: Math.random() * 0.2 + 0.16,
-      };
-
-      setParticles((prev) => [...prev.slice(-10), newParticle]);
+      setMode(getCursorMode(e.target as HTMLElement));
+      spawnParticle(e.clientX, e.clientY);
     };
 
-    const handleMouseLeave = () => {
+    const onLeave = () => {
       setIsVisible(false);
-      setIsInteractive(false);
+      setMode("default");
     };
+    const onDown = () => setIsClicking(true);
+    const onUp = () => setIsClicking(false);
 
-    const cleanupInterval = window.setInterval(() => {
-      setParticles((prev) => prev.slice(-6));
-    }, 100);
-
-    window.addEventListener("mousemove", handleMouseMove);
-    document.addEventListener("mouseleave", handleMouseLeave);
+    window.addEventListener("mousemove", onMove, { passive: true });
+    document.addEventListener("mouseleave", onLeave);
+    window.addEventListener("mousedown", onDown);
+    window.addEventListener("mouseup", onUp);
 
     return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-      document.removeEventListener("mouseleave", handleMouseLeave);
-      clearInterval(cleanupInterval);
+      window.removeEventListener("mousemove", onMove);
+      document.removeEventListener("mouseleave", onLeave);
+      window.removeEventListener("mousedown", onDown);
+      window.removeEventListener("mouseup", onUp);
+      cancelAnimationFrame(rafId.current);
     };
-  }, [isPointerDevice, mouseX, mouseY]);
+  }, [isPointer, rawX, rawY, spawnParticle]);
 
-  if (!isPointerDevice) return null;
+  if (!isPointer) return null;
+
+  const cfg = MODE_CONFIG[mode];
+  const half = cfg.size / 2;
+  const isTextMode = mode === "text";
 
   return (
     <>
-      {/* Main cursor body */}
+      {/* ── Ring — springs behind the dot ── */}
       <motion.div
-        className="fixed pointer-events-none z-[9998] hidden md:block"
-        style={{ x: ringX, y: ringY }}
+        className="fixed top-0 left-0 pointer-events-none z-[9998] hidden md:flex items-center justify-center"
+        style={{
+          x: ringX,
+          y: ringY,
+          width: cfg.size,
+          height: cfg.size,
+          marginLeft: -half,
+          marginTop: -half,
+        }}
         animate={{
           opacity: isVisible ? 1 : 0,
-          scale: isInteractive ? 1.08 : 1,
+          scale: isClicking ? 0.82 : 1,
         }}
-        transition={{
-          type: "spring",
-          stiffness: 420,
-          damping: 30,
-          mass: 0.22,
-        }}
+        transition={{ type: "spring", stiffness: 400, damping: 28, mass: 0.2 }}
       >
-        <div className="relative w-5 h-5">
-          {/* Breathing ring */}
+        {/* Outer ring — hides in text mode, expands in link/button */}
+        {!isTextMode && (
           <motion.div
-            className="absolute inset-0 rounded-full border border-foreground/70"
+            className="absolute inset-0 rounded-full border border-foreground/55"
             animate={{
-              scale: isInteractive ? [1, 1.12, 1] : [1, 1.06, 1],
-              opacity: isInteractive ? [0.9, 0.55, 0.9] : [0.8, 0.5, 0.8],
+              scale: isClicking ? 0.88 : [1, 1.07, 1],
+              opacity: [0.75, 0.42, 0.75],
             }}
             transition={{
-              duration: isInteractive ? 1.1 : 1.8,
-              repeat: Infinity,
-              ease: "easeInOut",
+              scale: isClicking
+                ? { type: "spring", stiffness: 600, damping: 20 }
+                : { duration: cfg.speed, repeat: Infinity, ease: "easeInOut" },
+              opacity: {
+                duration: cfg.speed,
+                repeat: Infinity,
+                ease: "easeInOut",
+              },
             }}
           />
+        )}
 
-          {/* Static inner ring */}
-          <div className="absolute inset-[3px] rounded-full border border-primary/40" />
+        {/* Inner accent ring */}
+        {!isTextMode && (
+          <div
+            className="absolute rounded-full border border-primary/35"
+            style={{ inset: Math.round(cfg.size * 0.18) }}
+          />
+        )}
 
-          {/* Orbit spark */}
+        {/* Orbit spark — only in default + button mode */}
+        {(mode === "default" || mode === "button") && (
           <motion.div
             className="absolute inset-0"
             animate={{ rotate: 360 }}
             transition={{
-              duration: isInteractive ? 1.4 : 2.4,
+              duration: cfg.speed,
               repeat: Infinity,
               ease: "linear",
             }}
           >
-            <div className="absolute left-1/2 top-0 -translate-x-1/2 w-1.5 h-1.5 rounded-full bg-accent" />
+            <div
+              className="absolute left-1/2 top-0 -translate-x-1/2 rounded-full bg-accent"
+              style={{ width: 5, height: 5, marginTop: -2 }}
+            />
           </motion.div>
-        </div>
+        )}
+
+        {/* Context label — "view" on links, "drag" on draggables */}
+        <AnimatePresence>
+          {cfg.label && (
+            <motion.span
+              key={cfg.label}
+              initial={{ opacity: 0, scale: 0.7 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.7 }}
+              transition={{ duration: 0.18 }}
+              className="absolute text-[9px] font-display font-bold tracking-widest uppercase text-foreground/80 select-none"
+              style={{
+                top: "50%",
+                left: "50%",
+                transform: "translate(-50%,-50%)",
+              }}
+            >
+              {cfg.label}
+            </motion.span>
+          )}
+        </AnimatePresence>
       </motion.div>
 
-      {/* Center dot */}
+      {/* ── Center dot — snaps directly to mouse (no spring) ── */}
       <motion.div
-        className="fixed pointer-events-none z-[9999] hidden md:block"
-        style={{ x: dotX, y: dotY }}
+        className="fixed top-0 left-0 pointer-events-none z-[9999] hidden md:block rounded-full bg-primary"
+        style={{
+          x: rawX,
+          y: rawY,
+          width: isTextMode ? 2 : 5,
+          height: isTextMode ? 16 : 5,
+          marginLeft: isTextMode ? -1 : -2.5,
+          marginTop: isTextMode ? -8 : -2.5,
+        }}
         animate={{
           opacity: isVisible ? 1 : 0,
-          scale: isInteractive ? [1, 1.2, 1] : [1, 1.08, 1],
+          scale: isClicking ? 0.6 : 1,
         }}
-        transition={{
-          duration: isInteractive ? 0.8 : 1.4,
-          repeat: Infinity,
-          ease: "easeInOut",
-        }}
-      >
-        <div className="w-[5px] h-[5px] rounded-full bg-primary" />
-      </motion.div>
+        transition={{ type: "spring", stiffness: 800, damping: 40, mass: 0.1 }}
+      />
 
-      {/* Particle trail */}
+      {/* ── Particle trail ── */}
       <div className="fixed inset-0 pointer-events-none z-[9997] hidden md:block">
         <AnimatePresence>
-          {particles.map((particle) => (
+          {particles.map((p) => (
             <motion.div
-              key={particle.id}
-              initial={{
-                opacity: particle.opacity,
-                scale: 1,
-                x: 0,
-                y: 0,
-              }}
-              animate={{
-                opacity: 0,
-                scale: 0,
-                x: particle.dx,
-                y: particle.dy,
-              }}
-              exit={{ opacity: 0 }}
-              transition={{
-                duration: 0.42,
-                ease: "easeOut",
-              }}
+              key={p.id}
               className="absolute rounded-full"
+              initial={{ opacity: p.opacity, scale: 1, x: 0, y: 0 }}
+              animate={{ opacity: 0, scale: 0.2, x: p.dx * 8, y: p.dy * 8 }}
+              exit={{ opacity: 0 }}
+              transition={{ duration: p.duration, ease: "easeOut" }}
               style={{
-                left: particle.x - particle.size / 2,
-                top: particle.y - particle.size / 2,
-                width: particle.size,
-                height: particle.size,
-                backgroundColor: particle.color,
-                boxShadow: `0 0 ${particle.size * 1.8}px ${particle.color}`,
+                left: p.x - p.size / 2,
+                top: p.y - p.size / 2,
+                width: p.size,
+                height: p.size,
+                backgroundColor: p.color,
+                boxShadow: `0 0 ${p.size * 2.5}px ${p.color}`,
               }}
             />
           ))}

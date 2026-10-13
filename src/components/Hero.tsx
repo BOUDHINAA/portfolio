@@ -1,166 +1,56 @@
-import { motion } from "framer-motion";
-import { Github, Linkedin, ChevronDown, Download } from "lucide-react";
+import { useRef, useState } from "react";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { ArrowDown, ArrowUpRight, Github, Linkedin, Shuffle, Braces } from "lucide-react";
 import { useTranslation } from "react-i18next";
+import { useDesignMotion } from "./DesignMotion";
 
 export default function Hero() {
   const { t } = useTranslation();
-
-  return (
-    <section
-      id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden light-stars pt-28 pb-12 md:pt-32 md:pb-16 lg:pt-24"
-    >
-      <div className="absolute inset-0 cyber-grid opacity-25 dark:opacity-30" />
-      <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-transparent to-background pointer-events-none" />
-
-      <div className="container mx-auto px-4 md:px-6 relative z-10">
-        <div className="flex flex-col items-center text-center">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.6 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, type: "spring" }}
-            className="mb-5 md:mb-6"
-          >
-            <div className="relative">
-              <div className="w-28 h-28 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-primary/60 shadow-[0_16px_40px_hsl(var(--primary)/0.16)] dark:shadow-[0_0_30px_hsl(var(--primary)/0.28)] bg-card/70 backdrop-blur-md mx-auto">
-                <img
-                  src={`${import.meta.env.BASE_URL}photo.webp`}
-                  alt={t("hero.photoAlt", "Ahmed Boudhina")}
-                  className="w-full h-full object-cover object-[50%_35%] scale-[1.02]"
-                />
-              </div>
-
-              <div className="absolute -inset-2 rounded-full border border-primary/30 animate-pulse" />
-              <div className="absolute -inset-4 rounded-full border border-secondary/20 animate-[spin_24s_linear_infinite]" />
-            </div>
-          </motion.div>
-
-          <motion.p
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.15 }}
-            className="text-primary font-display text-[11px] md:text-sm mb-4 tracking-[0.22em] md:tracking-[0.25em]"
-          >
-            {t("hero.welcome")}
-          </motion.p>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 26 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-display font-bold mb-5 md:mb-6 leading-tight"
-          >
-            <span className="text-foreground">{t("hero.titleFirst")} </span>
-            <span className="gradient-text text-glow">
-              {t("hero.titleLast")}
-            </span>
-          </motion.h1>
-
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.45 }}
-            className="flex flex-wrap justify-center gap-2 md:gap-3 mb-7 md:mb-8 max-w-3xl"
-          >
-            <span className="px-3 md:px-4 py-2 glass-card light-panel rounded-full text-primary font-body text-sm md:text-base font-semibold border border-primary/30">
-              {t("hero.tag1")}
-            </span>
-            <span className="px-3 md:px-4 py-2 glass-card light-panel rounded-full text-secondary font-body text-sm md:text-base font-semibold border border-secondary/30">
-              {t("hero.tag2")}
-            </span>
-            <span className="px-3 md:px-4 py-2 glass-card light-panel rounded-full text-accent font-body text-sm md:text-base font-semibold border border-accent/30">
-              {t("hero.tag3")}
-            </span>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
-            className="w-full max-w-3xl mb-8 md:mb-10"
-          >
-            <div className="glass-card light-panel rounded-3xl px-5 py-5 md:px-8 md:py-6 border border-border/70">
-              <p className="text-base md:text-xl text-muted-foreground font-body leading-relaxed">
-                {t("hero.description")}
-              </p>
-            </div>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.75 }}
-            className="flex flex-col sm:flex-row flex-wrap justify-center gap-4 md:gap-5 mb-10 md:mb-12 w-full sm:w-auto"
-          >
-            <a
-              href="#projects"
-              className="group relative px-6 md:px-8 py-3.5 md:py-4 bg-primary text-primary-foreground font-display font-bold rounded-xl overflow-hidden transition-all hover:scale-[1.03] shadow-[0_10px_24px_hsl(var(--primary)/0.2)] dark:shadow-[0_0_20px_hsl(var(--primary)/0.22)]"
-            >
-              <span className="relative z-10">{t("hero.viewProjects")}</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-primary via-secondary to-primary bg-[length:200%_100%] animate-shimmer opacity-0 group-hover:opacity-100 transition-opacity" />
-            </a>
-
-            <a
-              href={`${import.meta.env.BASE_URL}files/Ahmed_Boudhina_CV.pdf`}
-              download="Ahmed_Boudhina_CV.pdf"
-              className="px-6 md:px-8 py-3.5 md:py-4 border-2 border-primary/60 text-primary font-display font-bold rounded-xl bg-card/75 backdrop-blur-md hover:bg-primary hover:text-primary-foreground transition-all hover:scale-[1.03] flex items-center justify-center gap-2 shadow-sm"
-            >
-              <Download size={18} />
-              {t("hero.resume")}
-            </a>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.9 }}
-            className="flex gap-4 md:gap-5"
-          >
-            {[
-              {
-                icon: Github,
-                href: "https://github.com/BOUDHINAA",
-                color: "hover:text-foreground",
-                label: t("hero.githubLabel", "GitHub profile"),
-              },
-              {
-                icon: Linkedin,
-                href: "https://www.linkedin.com/in/ahmed-boudhina/",
-                color: "hover:text-blue-500 dark:hover:text-blue-400",
-                label: t("hero.linkedinLabel", "LinkedIn profile"),
-              },
-            ].map(({ icon: Icon, href, color, label }) => (
-              <motion.a
-                key={href}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label={label}
-                whileHover={{ scale: 1.12, y: -4 }}
-                className={`p-3 glass-card light-panel rounded-2xl text-muted-foreground ${color} transition-colors border border-border/70`}
-              >
-                <Icon size={20} />
-              </motion.a>
-            ))}
-          </motion.div>
-        </div>
+  const { still } = useDesignMotion();
+  const [remix, setRemix] = useState(0);
+  const stage = useRef<HTMLDivElement>(null);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const smoothX = useSpring(x, { stiffness: 100, damping: 20 });
+  const smoothY = useSpring(y, { stiffness: 100, damping: 20 });
+  const rotateX = useTransform(smoothY, [-1, 1], [5, -5]);
+  const rotateY = useTransform(smoothX, [-1, 1], [-6, 6]);
+  const move = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (still || event.pointerType !== "mouse" || !stage.current) return;
+    const box = stage.current.getBoundingClientRect();
+    x.set((event.clientX - box.left) / box.width * 2 - 1);
+    y.set((event.clientY - box.top) / box.height * 2 - 1);
+  };
+  const reset = () => { x.set(0); y.set(0); };
+  const shift = remix % 2 === 0 ? 1 : -1;
+  return <section id="home" className="studio-hero section-shell">
+    <div className="hero-kicker"><span className="status-dot" /> {t("studio.intro")}<span className="hero-location">{t("about.location")} ↗</span></div>
+    <div className="hero-composition">
+      <div className="hero-copy">
+        <motion.h1 initial={still ? false : { y: 45, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ duration: 0.8 }}>
+          {t("studio.headline1")}<br />{t("studio.headline2")}<br /><span className="hero-italic">{t("studio.headline3")}<span className="headline-dot">.</span></span>
+        </motion.h1>
+        <motion.p initial={still ? false : { y: 20, opacity: 0 }} animate={{ y: 0, opacity: 1 }} transition={{ delay: 0.2, duration: 0.7 }} className="hero-description">{t("studio.heroDescription")}</motion.p>
+        <div className="hero-actions"><a href="#projects" className="pill-button">{t("studio.viewWork")}<ArrowUpRight size={20} /></a><a href={`${import.meta.env.BASE_URL}files/Ahmed_Boudhina_CV.pdf`} download className="text-link">{t("hero.resume")}<ArrowDown size={17} /></a></div>
       </div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.2 }}
-        className="absolute bottom-5 md:bottom-8 left-1/2 -translate-x-1/2 z-10"
-      >
-        <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ repeat: Infinity, duration: 2 }}
-          className="text-primary"
-          aria-hidden="true"
-        >
-          <ChevronDown size={28} />
+      <div className={`hero-playground remix-${remix % 3}`} ref={stage} onPointerMove={move} onPointerLeave={reset}>
+        <div className="playground-grid" aria-hidden="true" />
+        <div className="orbit-path" aria-hidden="true"><span /></div>
+        <motion.div className="portrait-composition" style={still ? undefined : { rotateX, rotateY }}>
+          <motion.div className="portrait-paper" animate={{ rotate: still ? -5 : -5 * shift, y: still ? 0 : [0, -12, 0] }} transition={{ rotate: { type: "spring", stiffness: 80 }, y: { duration: 6, repeat: Infinity, ease: "easeInOut" } }}>
+            <div className="portrait-photo"><img src={`${import.meta.env.BASE_URL}photo.webp`} alt="Ahmed Boudhina" loading="eager" /></div>
+            <div className="portrait-caption"><span>Ahmed Boudhina</span><span>↗</span></div>
+          </motion.div>
+          <motion.div className="code-sticker" animate={{ rotate: still ? 7 : 7 * shift, x: still ? 0 : shift * 12, y: still ? 0 : [0, 10, 0] }} transition={{ x: { type: "spring" }, rotate: { type: "spring" }, y: { repeat: Infinity, duration: 5, ease: "easeInOut" } }} aria-hidden="true">
+            <div className="code-dots"><i /><i /><i /><span>hello.tsx</span></div><code><span>const</span> developer = &#123;<br />&nbsp; name: <b>'Ahmed'</b>,<br />&nbsp; mindset: <b>'curious'</b>,<br />&nbsp; ideas: <b>Infinity</b><br />&#125;</code>
+          </motion.div>
+          <motion.div className="skill-sticker" animate={{ rotate: still ? -8 : -8 * shift, y: still ? 0 : [0, -9, 0] }} transition={{ rotate: { type: "spring" }, y: { duration: 5.5, repeat: Infinity, ease: "easeInOut" } }}><Braces size={22} />Full-stack<span>↗</span></motion.div>
+          <div className="hero-flower" aria-hidden="true">✳</div>
+          <div className="idea-bubble" aria-hidden="true"><span className="bubble-eye" /><span className="bubble-eye" /><span className="bubble-smile" /></div>
         </motion.div>
-      </motion.div>
-    </section>
-  );
+        <button type="button" onClick={() => setRemix(value => value + 1)} className="remix-button"><Shuffle size={15} />{t("studio.remix")}</button>
+      </div>
+    </div>
+    <div className="hero-bottom"><a href="#about"><span className="scroll-arrow"><ArrowDown size={17} /></span>{t("studio.scroll")}</a><div><a href="https://github.com/BOUDHINAA" target="_blank" rel="noreferrer" aria-label={t("hero.githubLabel")}><Github size={18} /></a><a href="https://www.linkedin.com/in/ahmed-boudhina/" target="_blank" rel="noreferrer" aria-label={t("hero.linkedinLabel")}><Linkedin size={18} /></a><span>{t("studio.engineer")}</span></div></div>
+  </section>;
 }

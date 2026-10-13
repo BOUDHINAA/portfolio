@@ -53,6 +53,12 @@
         "title": "Résolution de Problèmes",
         "description": "Passionné par la conception de solutions efficaces, d’architectures propres et d’expériences utilisateur impactantes."
       }
+    },
+    "stats": {
+      "experience": "Années d’expérience",
+      "projects": "Projets",
+      "languages": "Langues",
+      "technologies": "Technologies"
     }
   },
   "projects": {
@@ -113,7 +119,6 @@
       }
     }
   },
-  
   "skills": {
     "sectionTitleFirst": "Arsenal",
     "sectionTitleLast": "Technique",
@@ -130,6 +135,54 @@
       "experiences": "Expériences professionnelles",
       "technologies": "Technologies"
     }
+  },
+  "scroll": {
+    "build": "Je crée des",
+    "navigation": "Chapitres du portfolio",
+    "signature": "Des idées aux interactions",
+    "statement": "Je crée des expériences digitales",
+    "explore": "Explorer",
+    "discover": "Découvrez mon parcours",
+    "experiences": "expériences."
+  },
+  "studio": {
+    "intro": "Ahmed Boudhina · Ingénieur full-stack",
+    "headline1": "De bonnes idées.",
+    "headline2": "De belles",
+    "headline3": "expériences",
+    "heroDescription": "Je crée des applications web soignées, de la première interaction à la dernière ligne de code backend. De la logique. Et beaucoup de curiosité.",
+    "viewWork": "Voir mes projets",
+    "remix": "Changer l’ambiance",
+    "scroll": "La suite se découvre en défilant",
+    "engineer": "Code, création & curiosité",
+    "behind": "La personne derrière les pixels",
+    "aboutTitle": "L’esprit ingénieur.",
+    "aboutEmphasis": "L’âme créative.",
+    "letsTalk": "Discutons",
+    "toolboxCaption": "Les bons outils. Le souci du détail.",
+    "toolboxTitle": "Du soin à chaque étape.",
+    "toolboxEmphasis": "Les bons outils en main.",
+    "alsoUsing": "Et aussi",
+    "marquee1": "Des interfaces soignées",
+    "marquee2": "Une architecture solide",
+    "marquee3": "Une touche de créativité",
+    "navigation": "Navigation principale",
+    "nextChapter": "Et si votre idée était la prochaine ?",
+    "contactTitle": "Une idée en tête ?",
+    "contactEmphasis": "Donnons-lui vie.",
+    "contactDescription": "Un nouveau produit, un défi technique ou simplement une bonne discussion. Racontez-moi ce que vous imaginez.",
+    "nameLabel": "Comment vous appelez-vous ?",
+    "namePlaceholder": "Votre nom",
+    "emailLabel": "Où puis-je vous répondre ?",
+    "messageLabel": "Quelle est votre idée ?",
+    "messagePlaceholder": "Parlez-moi un peu de votre projet…",
+    "send": "Envoyer un message",
+    "sending": "Envoi en cours…",
+    "sent": "Message envoyé. Merci de m’avoir contacté !",
+    "sendError": "Échec de l’envoi. Réessayez ou contactez-moi directement par email.",
+    "footerNote": "Du soin, de la curiosité et un peu de jeu.",
+    "backTop": "En haut",
+    "workCaption": "Quelques idées auxquelles j’ai donné vie",
+    "skipContent": "Aller au contenu"
   }
-
 }

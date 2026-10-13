@@ -1,0 +1,51 @@
+/* Scroll-led chapters, inspired by editorial full-page portfolios. */
+.portfolio-experience { overflow-x: clip; }
+.reading-progress { position: fixed; inset: 0 0 auto; height: 3px; background: var(--gradient-primary); transform-origin: left; z-index: 100; }
+.chapter-atmosphere { position: fixed; inset: 0; pointer-events: none; overflow: hidden; transition: background 1.2s ease; background: radial-gradient(ellipse at 85% 35%, hsl(var(--primary) / .08), transparent 65%); }
+.chapter-atmosphere-1, .chapter-atmosphere-3 { background: radial-gradient(ellipse at 15% 60%, hsl(var(--secondary) / .1), transparent 65%); }
+.chapter-atmosphere-2, .chapter-atmosphere-4 { background: radial-gradient(ellipse at 80% 65%, hsl(var(--accent) / .09), transparent 65%); }
+.atmosphere-orbit { position: absolute; width: 72vw; height: 72vw; right: -35vw; top: 15vh; border: 1px solid hsl(var(--primary) / .12); border-radius: 42% 58% 65% 35%; }
+.atmosphere-orbit::after { content: ''; position: absolute; inset: 9%; border: 1px solid hsl(var(--secondary) / .12); border-radius: 50%; }
+.chapter-watermark { position: absolute; right: 2vw; bottom: -5vw; font: 800 clamp(160px, 28vw, 440px)/1 var(--font-display); color: hsl(var(--foreground) / .025); }
+.chapter-rail { position: fixed; right: 22px; top: 50%; transform: translateY(-50%); z-index: 65; display: flex; flex-direction: column; gap: 5px; }
+.chapter-rail-caption, .chapter-rail-total { font: 500 10px var(--font-display); color: hsl(var(--muted-foreground)); letter-spacing: .12em; margin: 12px 0; text-align: right; }
+.chapter-rail a { display: flex; align-items: center; justify-content: flex-end; gap: 10px; min-height: 40px; color: hsl(var(--muted-foreground)); }
+.chapter-rail-number { font: 500 10px var(--font-display); }
+.chapter-rail-line { width: 12px; height: 2px; background: currentColor; transition: width .35s ease; }
+.chapter-rail-label { opacity: 0; transform: translateX(5px); transition: opacity .25s, transform .25s; font-size: 13px; background: hsl(var(--background) / .94); padding: 3px 8px; border-radius: 4px; }
+.chapter-rail a:hover .chapter-rail-label, .chapter-rail a:focus-visible .chapter-rail-label { opacity: 1; transform: none; }
+.chapter-rail .is-active { color: hsl(var(--primary)); }
+.chapter-rail .is-active .chapter-rail-line { width: 28px; }
+.portfolio-experience a:focus-visible, .portfolio-experience button:focus-visible { outline: 2px solid hsl(var(--primary)); outline-offset: 5px; }
+.scroll-signature { position: relative; padding: 65px 0 55px; overflow: hidden; border-block: 1px solid hsl(var(--border) / .6); background: hsl(var(--background) / .55); }
+.signature-caption { display: flex; align-items: center; justify-content: space-between; margin: 0 8%; font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: hsl(var(--muted-foreground)); }
+.signature-type { padding: 50px 0 40px; font: 800 clamp(48px, 9vw, 160px)/1.15 var(--font-display); letter-spacing: -.065em; text-align: center; }
+.signature-type > div { white-space: nowrap; }
+.signature-star { display: inline-block; margin-left: .3em; color: hsl(var(--primary)); }
+.signature-outline { color: transparent; -webkit-text-stroke: 1px hsl(var(--primary) / .7); }
+.signature-next { display: flex; align-items: center; justify-content: flex-end; gap: 24px; margin: 0 8%; font-size: 16px; }
+.signature-next svg { transition: transform .3s; }
+.signature-next:hover svg { transform: translate(4px, 4px); }
+.portfolio-experience #home h1 { letter-spacing: -.055em; }
+.portfolio-experience #home { min-height: 100svh; }
+.portfolio-experience #about, .portfolio-experience #projects, .portfolio-experience #skills, .portfolio-experience #contact { min-height: 100svh; }
+@media (min-width: 1280px) and (prefers-reduced-motion: no-preference) {
+  html.portfolio-scroll { scroll-snap-type: y proximity; }
+  .portfolio-experience section[id] { scroll-snap-align: start; }
+  .portfolio-experience section[id] > .container { padding-inline: 6rem; }
+}
+@media (max-width: 1279px) { .chapter-rail { display: none; } }
+@media (max-width: 640px) {
+  .scroll-signature { padding-block: 36px; }
+  .signature-caption { font-size: 9px; letter-spacing: .1em; }
+  .signature-type { font-size: clamp(30px, 8.5vw, 54px); padding-block: 35px; }
+  .signature-next { font-size: 14px; }
+  .chapter-watermark { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html.portfolio-scroll { scroll-behavior: auto; scroll-snap-type: none; }
+  .portfolio-experience *, .portfolio-experience *::before, .portfolio-experience *::after { animation: none !important; transition-duration: 0.01ms !important; }
+  .chapter-atmosphere { display: none; }
+}
+.hero-backdrop-type { position: absolute; top: 38%; left: 2%; white-space: nowrap; font: 900 clamp(100px, 19vw, 320px)/1 var(--font-display); letter-spacing: -.07em; color: transparent; -webkit-text-stroke: 1px hsl(var(--primary) / .1); pointer-events: none; }
+@media (min-width: 1280px) and (prefers-reduced-motion: no-preference) { .scroll-signature { scroll-snap-align: center; } }

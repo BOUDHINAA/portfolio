@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        display: ['Orbitron', 'sans-serif'],
-        body: ['Rajdhani', 'sans-serif'],
+        display: ['Space Grotesk', 'sans-serif'],
+        body: ['DM Sans', 'sans-serif'],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -87,11 +87,11 @@ export default {
           "50%": { transform: "translateY(-20px) rotateX(5deg)" },
         },
         "glow-pulse": {
-          "0%, 100%": { 
-            boxShadow: "0 0 20px hsl(180 100% 50% / 0.5), 0 0 40px hsl(180 100% 50% / 0.3)" 
+          "0%, 100%": {
+            boxShadow: "0 0 20px hsl(180 100% 50% / 0.5), 0 0 40px hsl(180 100% 50% / 0.3)"
           },
-          "50%": { 
-            boxShadow: "0 0 40px hsl(180 100% 50% / 0.8), 0 0 80px hsl(180 100% 50% / 0.5)" 
+          "50%": {
+            boxShadow: "0 0 40px hsl(180 100% 50% / 0.8), 0 0 80px hsl(180 100% 50% / 0.5)"
           },
         },
         "rotate-slow": {

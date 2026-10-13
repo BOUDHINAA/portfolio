@@ -53,6 +53,12 @@
         "title": "Problem Solving",
         "description": "Passionate about designing efficient solutions, clean architecture, and impactful user experiences."
       }
+    },
+    "stats": {
+      "experience": "Years of experience",
+      "projects": "Projects",
+      "languages": "Languages",
+      "technologies": "Technologies"
     }
   },
   "projects": {
@@ -113,7 +119,6 @@
       }
     }
   },
-  
   "skills": {
     "sectionTitleFirst": "Technical",
     "sectionTitleLast": "Arsenal",
@@ -130,6 +135,54 @@
       "experiences": "Work Experiences",
       "technologies": "Technologies"
     }
+  },
+  "scroll": {
+    "build": "I build digital",
+    "navigation": "Portfolio chapters",
+    "signature": "From ideas to interaction",
+    "statement": "I build digital experiences",
+    "explore": "Explore",
+    "discover": "Meet the engineer",
+    "experiences": "experiences."
+  },
+  "studio": {
+    "intro": "Ahmed Boudhina · Full-stack engineer",
+    "headline1": "Good ideas.",
+    "headline2": "Made into",
+    "headline3": "great experiences",
+    "heroDescription": "I build thoughtful web applications, from the first interaction to the last line of backend code. A little logic. A lot of curiosity.",
+    "viewWork": "Explore my work",
+    "remix": "Remix the mood",
+    "scroll": "A little scroll goes a long way",
+    "engineer": "Code, craft & curiosity",
+    "behind": "The person behind the pixels",
+    "aboutTitle": "An engineer’s mind.",
+    "aboutEmphasis": "A maker’s heart.",
+    "letsTalk": "Let’s talk",
+    "toolboxCaption": "The right tools. The right details.",
+    "toolboxTitle": "Built with care.",
+    "toolboxEmphasis": "And a good toolkit.",
+    "alsoUsing": "Also in the mix",
+    "marquee1": "Thoughtful interfaces",
+    "marquee2": "Solid engineering",
+    "marquee3": "A playful perspective",
+    "navigation": "Main navigation",
+    "nextChapter": "Your idea could be next",
+    "contactTitle": "Something in mind?",
+    "contactEmphasis": "Let’s make it real.",
+    "contactDescription": "A new product, a tricky challenge, or just a good conversation. I’d love to hear what you’re thinking.",
+    "nameLabel": "What’s your name?",
+    "namePlaceholder": "Your name",
+    "emailLabel": "Where can I reach you?",
+    "messageLabel": "What are you thinking?",
+    "messagePlaceholder": "Tell me a little about your idea…",
+    "send": "Send a message",
+    "sending": "Sending…",
+    "sent": "Message sent. Thanks for reaching out!",
+    "sendError": "Could not send your message. Please try again or email me directly.",
+    "footerNote": "Made with intention. And a little play.",
+    "backTop": "Back to top",
+    "workCaption": "A few things I’ve helped bring to life",
+    "skipContent": "Skip to content"
   }
-
 }
